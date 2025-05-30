@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="space-y-4 text-center md:text-left">
-            <Link to="/" className="inline-block">
+            <Link to="/#/" className="inline-block">
               <img 
                 src={logo} 
                 alt="LCM Logo" 
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-white/70 hover:text-white transition-colors">
+                <Link to="#/team" className="text-white/70 hover:text-white transition-colors">
                   Team
                 </Link>
               </li>
@@ -56,12 +56,12 @@ const Footer: React.FC = () => {
             <h3 className="font-display text-lg font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/careers" className="text-white/70 hover:text-white transition-colors">
+                <Link to="#/careers" className="text-white/70 hover:text-white transition-colors">
                   Careers
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-white/70 hover:text-white transition-colors">
+                <Link to="#/faq" className="text-white/70 hover:text-white transition-colors">
                   FAQ
                 </Link>
               </li>

@@ -247,7 +247,7 @@ const Team: React.FC = () => (
             Join our team of innovators and help revolutionize how electric vehicles charge.
           </p>
           <motion.a 
-            href="/careers"
+            href="#/careers"
             className="inline-block bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-full font-medium transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

@@ -9,10 +9,10 @@ const navLinks = [
   { name: 'Technology', href: '/#technology' },
   { name: 'Benefits', href: '/#benefits' },
   { name: 'Integration', href: '/#integration' },
-  { name: 'Timeline', href: '/timeline' },
-  { name: 'Team', href: '/team' },
-  { name: 'Careers', href: '/careers' },
-  { name: 'FAQ', href: '/faq' },
+  { name: 'Timeline', href: '#/timeline' },
+  { name: 'Team', href: '#/team' },
+  { name: 'Careers', href: '#/careers' },
+  { name: 'FAQ', href: '#/faq' },
 ];
 
 const Header: React.FC = () => {
