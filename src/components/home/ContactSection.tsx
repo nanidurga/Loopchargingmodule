@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Send, Rocket, Linkedin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { emailConfig, RATE_LIMIT_MS } from '../../config';
+import { scrollToContact as navigateToContactTab } from '../../utils/navigation';
 
 interface FormState {
   name: string;
@@ -107,14 +108,22 @@ const ContactSection: React.FC = () => {
     }
   }, [formState, lastSubmissionTime]);
 
-  const handleRequestFeasibilityStudy = useCallback(() => {
-    setFormState(prev => ({...prev, inquiryType: 'integration'}));
-    document.getElementById('inquiryType')?.scrollIntoView({behavior: 'smooth'});
+  const handleRequestFeasibilityStudy = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    navigateToContactTab('integration');
   }, []);
 
-  const handleScheduleConsultation = useCallback(() => {
-    setFormState(prev => ({...prev, inquiryType: 'technical'}));
-    document.getElementById('inquiryType')?.scrollIntoView({behavior: 'smooth'});
+  const handleScheduleConsultation = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    navigateToContactTab('technical');
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.hash.split('?')[1]);
+    const inquiry = params.get('inquiryType');
+    if (inquiry) {
+      setFormState(prev => ({ ...prev, inquiryType: inquiry }));
+    }
   }, []);
 
   return (
