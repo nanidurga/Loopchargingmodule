@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, PlugZap, UserPlus } from 'lucide-react';
 import L1Image from '../../assets/L1.webp';
-import { scrollToContact } from '../../utils/navigation';
+import { scrollToContact, scrollToSection } from '../../utils/navigation';
 
 const HeroSection: React.FC = () => {
   const handleDemoClick = (e: React.MouseEvent) => {
@@ -12,6 +12,11 @@ const HeroSection: React.FC = () => {
   const handlePartnershipClick = (e: React.MouseEvent) => {
     e.preventDefault();
     scrollToContact('partnership');
+  };
+
+  const handleLearnMoreClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToSection('technology');
   };
 
   return (
@@ -69,7 +74,11 @@ const HeroSection: React.FC = () => {
                     <span className="inline-block px-3 py-1 text-xs font-medium bg-primary-500/20 text-primary-300 rounded-full">Zero Drag</span>
                     <span className="inline-block px-3 py-1 text-xs font-medium bg-secondary-500/20 text-secondary-300 rounded-full">In-Drive Charging</span>
                   </div>
-                  <a href="#technology" className="text-primary-400 hover:text-primary-300 text-sm font-medium inline-flex items-center">
+                  <a 
+                    href="#technology" 
+                    onClick={handleLearnMoreClick} 
+                    className="text-primary-400 hover:text-primary-300 text-sm font-medium inline-flex items-center"
+                  >
                     Learn more <ArrowRight size={14} className="ml-1" />
                   </a>
                 </div>

@@ -6,11 +6,12 @@ import logo from '../../assets/logo.png';
 import { handleNavigation } from '../../utils/navigation';
 
 const navLinks = [
-  { name: 'Technology', href: '#technology' },
-  { name: 'Benefits', href: '#benefits' },
-  { name: 'Integration', href: '#integration' },
-  { name: 'Team', href: '#team' },
-  { name: 'FAQ', href: '#faq' },
+  { name: 'Technology', href: '/#technology' },
+  { name: 'Benefits', href: '/#benefits' },
+  { name: 'Integration', href: '/#integration' },
+  { name: 'Team', href: '/team' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'FAQ', href: '/faq' },
 ];
 
 const Header: React.FC = () => {

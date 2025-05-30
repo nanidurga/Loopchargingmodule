@@ -2,25 +2,9 @@ import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
 import logo from '../../assets/logo.png';
+import { handleNavigation } from '../../utils/navigation';
 
 const Footer: React.FC = () => {
-  const handleNavClick = useCallback((href: string, e: React.MouseEvent) => {
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        const headerOffset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }
-  }, []);
-
   return (
     <footer className="bg-dark-800 border-t border-white/10">
       <div className="container mx-auto px-4 py-12">
@@ -45,17 +29,17 @@ const Footer: React.FC = () => {
             <h3 className="font-display text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/#technology" onClick={(e) => handleNavClick('/#technology', e)} className="text-white/70 hover:text-white transition-colors">
+                <Link to="/#technology" onClick={(e) => handleNavigation('/#technology', e)} className="text-white/70 hover:text-white transition-colors">
                   Technology
                 </Link>
               </li>
               <li>
-                <Link to="/#benefits" onClick={(e) => handleNavClick('/#benefits', e)} className="text-white/70 hover:text-white transition-colors">
+                <Link to="/#benefits" onClick={(e) => handleNavigation('/#benefits', e)} className="text-white/70 hover:text-white transition-colors">
                   Benefits
                 </Link>
               </li>
               <li>
-                <Link to="/#integration" onClick={(e) => handleNavClick('/#integration', e)} className="text-white/70 hover:text-white transition-colors">
+                <Link to="/#integration" onClick={(e) => handleNavigation('/#integration', e)} className="text-white/70 hover:text-white transition-colors">
                   Integration
                 </Link>
               </li>
@@ -82,7 +66,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/#contact" onClick={(e) => handleNavClick('/#contact', e)} className="text-white/70 hover:text-white transition-colors">
+                <Link to="/#contact" onClick={(e) => handleNavigation('/#contact', e)} className="text-white/70 hover:text-white transition-colors">
                   Contact
                 </Link>
               </li>
