@@ -88,16 +88,6 @@ const TeamMember: React.FC<TeamMemberProps> = React.memo(({ name, role, bio, ima
 
 const teamMembers: TeamMemberProps[] = [
   {
-    name: "Anirudh Srinivasan",
-    role: "Founder & CEO",
-    bio: "Experienced in EV technology and sustainable energy solutions.",
-    image: AniImage,
-    social: {
-      linkedin: "https://www.linkedin.com/in/anirudh-srinivasan-0b1b3b1b2/",
-      email: "mailto:anirudh@lcm.com"
-    }
-  },
-  {
     name: "Wesly Jambarapu",
     role: "CEO & Founder",
     bio: "As CEO of LCM, I pioneer breakthrough solution of LCM that enable electric vehicles to charge while in motion",
@@ -115,6 +105,16 @@ const teamMembers: TeamMemberProps[] = [
     social: {
       linkedin: "https://www.linkedin.com/in/jayshri-bej/",
       email: "jayshribej7@gmail.com"
+    }
+  },
+  {
+    name: "Anil Kumar",
+    role: "Founder & CEO",
+    bio: "Experienced in EV technology and sustainable energy solutions.",
+    image: AniImage,
+    social: {
+      linkedin: "https://www.linkedin.com/in/anirudh-srinivasan-0b1b3b1b2/",
+      email: "mailto:anirudh@lcm.com"
     }
   },
   {

@@ -17,6 +17,7 @@ import PageTransition from './components/layout/PageTransition';
 const TeamPage = lazy(() => import('./pages/Team'));
 const CareersPage = lazy(() => import('./pages/Careers'));
 const FAQPage = lazy(() => import('./pages/FAQ'));
+const TimelinePage = lazy(() => import('./pages/TimelinePage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -132,6 +133,16 @@ function AppRoutes() {
             <Layout>
               <PageTransition>
                 <FAQPage />
+              </PageTransition>
+            </Layout>
+          } 
+        />
+        <Route 
+          path="/timeline" 
+          element={
+            <Layout>
+              <PageTransition>
+                <TimelinePage />
               </PageTransition>
             </Layout>
           } 

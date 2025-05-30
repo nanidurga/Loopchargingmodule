@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion';
 import { Users, Rocket, Mail, Linkedin } from 'lucide-react';
 
+// Import team images
+import WesImage from '../assets/Wes.webp';
+import JayImage from '../assets/Jay.webp';
+import AniImage from '../assets/Ani.webp'; // Assuming this is Anil Kumar based on usage below
+import NavImage from '../assets/Nav.webp';
+import DurImage from '../assets/Dur.webp';
+import CheImage from '../assets/che.webp';
+
 // --- TypeScript interface for strong typing ---
 interface TeamMember {
   name: string;
@@ -17,14 +25,12 @@ const CARD_WIDTH = 400;
 const CARD_HEIGHT = 600;
 const IMAGE_HEIGHT = 320;
 
-
-
 const coreTeam: TeamMember[] = [
   {
     name: "Wesly Jambarapu",
     role: "CEO & Founder",
     background: "As CEO of LCM, I pioneer breakthrough solution of LCM that enable electric vehicles to charge while in motion",
-    image: "src/assets/Wes.webp",
+    image: WesImage,
     social: {
       linkedin: "https://www.linkedin.com/in/wesly-j/",
       email: "wesly.lcm@gmail.com"
@@ -34,7 +40,7 @@ const coreTeam: TeamMember[] = [
     name: "Jayshri Bej",
     role: "Co-Founder & CRO",
     background: "As CRO of LCM, I steer project management, ensuring our solutions meet real-world needs and scale effectively",
-    image: "src/assets/Jay.webp",
+    image: JayImage,
     social: {
       linkedin: "https://www.linkedin.com/in/jayshri-bej/",
       email: "jayshribej7@gmail.com"
@@ -44,7 +50,7 @@ const coreTeam: TeamMember[] = [
     name: "Anil Kumar",
     role: "Co-Founder & CPO",
     background: "Former aerospace engineer specializing in airflow dynamics and propulsion systems with experience at Boeing and SpaceX.",
-    image: "src/assets/Ani.webp",
+    image: AniImage,
     social: {
       linkedin: "https://www.linkedin.com/in/anilkumar-pidamarthi/",
       email: "anilkumarpidamarthi123@gmail.com"
@@ -54,7 +60,7 @@ const coreTeam: TeamMember[] = [
     name: "Naveen Islavath",
     role: "Co-Founder & CFO",
     background: "As CFO, I manage financial operations and drive strategic partnerships to fuel LCM's growth.",
-    image: "src/assets/Nav.webp",
+    image: NavImage,
     social: {
       linkedin: "https://www.linkedin.com/in/naveen-islavath-b992021ba",
       email: "naveenssc2019@gmail.com"
@@ -64,7 +70,7 @@ const coreTeam: TeamMember[] = [
     name: "Durga Prasad",
     role: "CTO",
     background: "As CTO, I architect and drive the core technology powering LCM's breakthrough EV charging solutions.",
-    image: "src/assets/Dur.webp",
+    image: DurImage,
     social: {
       linkedin: "https://www.linkedin.com/in/durga-prasad-nuthalapati-646b73233/",
       email: "durgaprasad69110@gmail.com"
@@ -74,7 +80,7 @@ const coreTeam: TeamMember[] = [
     name: "Chethan Ashray C",
     role: "COO",
     background: "As COO, I streamline operations at LCM to ensure seamless delivery of innovative EV charging solutions.",
-    image: "src/assets/che.webp",
+    image: CheImage,
     social: {
       linkedin: "https://www.linkedin.com/in/chethan-ashray-1351b0329",
       email: "chethanashray16@gmail.com"
