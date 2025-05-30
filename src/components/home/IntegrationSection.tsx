@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Cpu, Cable, Car } from 'lucide-react';
+import { scrollToContact } from '../../utils/navigation';
 
 interface IntegrationFeatureProps {
   icon: React.ReactNode;
@@ -22,6 +23,11 @@ const IntegrationFeature: React.FC<IntegrationFeatureProps> = ({ icon, title, de
 };
 
 const IntegrationSection: React.FC = () => {
+  const handlePartnershipClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToContact('partnership');
+  };
+
   const features = [
     {
       icon: <Car className="h-5 w-5" />,
@@ -64,6 +70,7 @@ const IntegrationSection: React.FC = () => {
                 src="https://images.pexels.com/photos/3822843/pexels-photo-3822843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                 alt="EV CAD Diagram with LCM" 
                 className="w-full h-auto"
+                loading="lazy"
               />
             </div>
             <div className="bg-dark-800 border border-white/10 rounded-xl p-4">
@@ -114,6 +121,7 @@ const IntegrationSection: React.FC = () => {
               </p>
               <a 
                 href="#contact" 
+                onClick={handlePartnershipClick}
                 className="inline-block bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full font-medium transition-colors"
               >
                 Explore Partnership Opportunities

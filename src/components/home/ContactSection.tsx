@@ -1,7 +1,7 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Send, Rocket, Linkedin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import { emailConfig } from '../../config';
+import { emailConfig, RATE_LIMIT_MS } from '../../config';
 
 interface FormState {
   name: string;
@@ -9,6 +9,35 @@ interface FormState {
   inquiryType: string;
   message: string;
 }
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+const validateEmail = (email: string): boolean => {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(email);
+};
+
+const validateForm = (formState: FormState): FormErrors => {
+  const errors: FormErrors = {};
+  
+  if (formState.name.length < 2) {
+    errors.name = 'Name must be at least 2 characters long';
+  }
+  
+  if (!validateEmail(formState.email)) {
+    errors.email = 'Please enter a valid email address';
+  }
+  
+  if (formState.message.length < 10) {
+    errors.message = 'Message must be at least 10 characters long';
+  }
+  
+  return errors;
+};
 
 const ContactSection: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -21,46 +50,62 @@ const ContactSection: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [lastSubmissionTime, setLastSubmissionTime] = useState<number>(0);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
+    // Clear errors when user starts typing
+    setFormErrors(prev => ({ ...prev, [name]: undefined }));
   }, []);
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+    
+    // Validate form
+    const errors = validateForm(formState);
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    // Check rate limiting
+    const now = Date.now();
+    if (now - lastSubmissionTime < RATE_LIMIT_MS) {
+      setError(`Please wait ${Math.ceil((RATE_LIMIT_MS - (now - lastSubmissionTime)) / 1000)} seconds before submitting again`);
+      return;
+    }
+
     setIsSubmitting(true);
     
-    if (form.current) {
-      emailjs.sendForm(
+    try {
+      if (!form.current) throw new Error('Form not found');
+      
+      await emailjs.sendForm(
         emailConfig.serviceId,
         emailConfig.templateId,
         form.current,
-        {
-          publicKey: emailConfig.publicKey,
-        }
-      )
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          setIsSubmitted(true);
-          setFormState({
-            name: '',
-            email: '',
-            inquiryType: 'demo',
-            message: ''
-          });
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-          alert('Failed to send message. Please try again or contact us directly.');
-        },
-      )
-      .finally(() => {
-        setIsSubmitting(false);
+        emailConfig.publicKey
+      );
+
+      setIsSubmitted(true);
+      setLastSubmissionTime(Date.now());
+      setFormState({
+        name: '',
+        email: '',
+        inquiryType: 'demo',
+        message: ''
       });
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      setError('Failed to send message. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
     }
-  }, [emailConfig]);
+  }, [formState, lastSubmissionTime]);
 
   const handleRequestFeasibilityStudy = useCallback(() => {
     setFormState(prev => ({...prev, inquiryType: 'integration'}));
@@ -117,10 +162,16 @@ const ContactSection: React.FC = () => {
                     </button>
                   </div>
                 ) : (
-                  <form ref={form} onSubmit={handleSubmit}>
+                  <form ref={form} onSubmit={handleSubmit} noValidate>
                     <h3 className="font-display font-semibold text-xl text-white mb-6">
                       Contact Us
                     </h3>
+                    
+                    {error && (
+                      <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 mb-6 text-red-400">
+                        {error}
+                      </div>
+                    )}
                     
                     <div className="space-y-4">
                       <div>
@@ -133,10 +184,14 @@ const ContactSection: React.FC = () => {
                           name="name"
                           value={formState.name}
                           onChange={handleChange}
-                          required
-                          className="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50"
+                          className={`w-full bg-dark-700 border ${
+                            formErrors.name ? 'border-red-500' : 'border-white/10'
+                          } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50`}
                           placeholder="Your name"
                         />
+                        {formErrors.name && (
+                          <p className="mt-1 text-sm text-red-400">{formErrors.name}</p>
+                        )}
                       </div>
                       
                       <div>
@@ -149,10 +204,14 @@ const ContactSection: React.FC = () => {
                           name="email"
                           value={formState.email}
                           onChange={handleChange}
-                          required
-                          className="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50"
+                          className={`w-full bg-dark-700 border ${
+                            formErrors.email ? 'border-red-500' : 'border-white/10'
+                          } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50`}
                           placeholder="your.email@example.com"
                         />
+                        {formErrors.email && (
+                          <p className="mt-1 text-sm text-red-400">{formErrors.email}</p>
+                        )}
                       </div>
                       
                       <div>
@@ -164,7 +223,6 @@ const ContactSection: React.FC = () => {
                           name="inquiryType"
                           value={formState.inquiryType}
                           onChange={handleChange}
-                          required
                           className="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50"
                         >
                           <option value="demo">Book a Demo</option>
@@ -184,11 +242,15 @@ const ContactSection: React.FC = () => {
                           name="message"
                           value={formState.message}
                           onChange={handleChange}
-                          required
                           rows={4}
-                          className="w-full bg-dark-700 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50"
+                          className={`w-full bg-dark-700 border ${
+                            formErrors.message ? 'border-red-500' : 'border-white/10'
+                          } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50`}
                           placeholder="Tell us how we can help you..."
-                        ></textarea>
+                        />
+                        {formErrors.message && (
+                          <p className="mt-1 text-sm text-red-400">{formErrors.message}</p>
+                        )}
                       </div>
                       
                       <div className="pt-2">

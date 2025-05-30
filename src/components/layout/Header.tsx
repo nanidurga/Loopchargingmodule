@@ -1,34 +1,34 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
+import { handleNavigation } from '../../utils/navigation';
 
-interface NavLink {
-  name: string;
-  href: string;
-  isPage?: boolean;
-}
-
-const navLinks: NavLink[] = [
-  { name: 'Technology', href: '/#technology' },
-  { name: 'Benefits', href: '/#benefits' },
-  { name: 'Integration', href: '/#integration' },
-  { name: 'Timeline', href: '/#timeline' },
-  { name: 'Team', href: '/team', isPage: true },
-  { name: 'Careers', href: '/careers', isPage: true },
-  { name: 'FAQ', href: '/faq', isPage: true }
+const navLinks = [
+  { name: 'Technology', href: '#technology' },
+  { name: 'Benefits', href: '#benefits' },
+  { name: 'Integration', href: '#integration' },
+  { name: 'Team', href: '#team' },
+  { name: 'FAQ', href: '#faq' },
 ];
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -36,63 +36,12 @@ const Header: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+    closeMobileMenu();
+  }, [location, closeMobileMenu]);
 
-  const handleNavClick = useCallback((href: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    if (href.startsWith('/#')) {
-      const id = href.substring(2);
-      if (location.pathname === '/') {
-        // If we're already on the home page, just scroll to the section
-        const element = document.getElementById(id);
-        if (element) {
-          const headerOffset = 80;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      } else {
-        // If we're on another page, navigate to home and then scroll
-        navigate('/', { state: { scrollTo: id } });
-      }
-    } else {
-      // For regular page links
-      navigate(href);
-    }
-  }, [location, navigate]);
-
-  // Listen for navigation state to handle scrolling after navigation
-  useEffect(() => {
-    const state = location.state as { scrollTo?: string };
-    if (state?.scrollTo) {
-      const element = document.getElementById(state.scrollTo);
-      if (element) {
-        const headerOffset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        setTimeout(() => {
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-          // Clear the state after scrolling
-          navigate(location.pathname, { replace: true });
-        }, 100);
-      }
-    }
-  }, [location, navigate]);
-
-  const bgClass = isScrolled ? 'bg-dark-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent';
-
-  const closeMobileMenu = useCallback(() => setIsOpen(false), []);
-  const toggleMobileMenu = useCallback(() => setIsOpen(prev => !prev), []);
+  const bgClass = scrolled
+    ? 'bg-dark-900/95 backdrop-blur-md border-b border-white/10'
+    : 'bg-transparent';
 
   return (
     <motion.header
@@ -126,14 +75,14 @@ const Header: React.FC = () => {
                 key={link.name}
                 to={link.href}
                 className="text-sm font-medium text-white/70 hover:text-white transition-colors"
-                onClick={(e) => handleNavClick(link.href, e)}
+                onClick={(e) => handleNavigation(link.href, e)}
               >
                 {link.name}
               </Link>
             ))}
             <Link
               to="/#contact"
-              onClick={(e) => handleNavClick('/#contact', e)}
+              onClick={(e) => handleNavigation('/#contact', e)}
               className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-full text-sm font-medium transition-colors"
             >
               Contact Us
@@ -145,6 +94,7 @@ const Header: React.FC = () => {
             className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -168,14 +118,20 @@ const Header: React.FC = () => {
                     key={link.name}
                     to={link.href}
                     className="text-base font-medium text-white/70 hover:text-white transition-colors"
-                    onClick={(e) => handleNavClick(link.href, e)}
+                    onClick={(e) => {
+                      handleNavigation(link.href, e);
+                      closeMobileMenu();
+                    }}
                   >
                     {link.name}
                   </Link>
                 ))}
                 <Link
                   to="/#contact"
-                  onClick={(e) => handleNavClick('/#contact', e)}
+                  onClick={(e) => {
+                    handleNavigation('/#contact', e);
+                    closeMobileMenu();
+                  }}
                   className="text-base font-medium text-primary-500 hover:text-primary-400 transition-colors"
                 >
                   Contact Us

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { scrollToContact } from '../../utils/navigation';
 
 interface FAQItemProps {
   question: string;
@@ -35,6 +36,11 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, toggleOpen 
 
 const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToContact('other');
+  };
 
   const faqs = [
     {
@@ -111,6 +117,7 @@ const FAQSection: React.FC = () => {
           </p>
           <a 
             href="#contact" 
+            onClick={handleContactClick}
             className="inline-block bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full font-medium transition-colors"
           >
             Ask Us Anything

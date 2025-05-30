@@ -1,6 +1,12 @@
 import React from 'react';
 import { Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import AniImage from '../../assets/Ani.webp';
+import DurImage from '../../assets/Dur.webp';
+import JayImage from '../../assets/Jay.webp';
+import NavImage from '../../assets/Nav.webp';
+import WesImage from '../../assets/Wes.webp';
+import CheImage from '../../assets/che.webp';
 
 // Placeholder images; replace with your own imports if needed
 
@@ -82,10 +88,20 @@ const TeamMember: React.FC<TeamMemberProps> = React.memo(({ name, role, bio, ima
 
 const teamMembers: TeamMemberProps[] = [
   {
+    name: "Anirudh Srinivasan",
+    role: "Founder & CEO",
+    bio: "Experienced in EV technology and sustainable energy solutions.",
+    image: AniImage,
+    social: {
+      linkedin: "https://www.linkedin.com/in/anirudh-srinivasan-0b1b3b1b2/",
+      email: "mailto:anirudh@lcm.com"
+    }
+  },
+  {
     name: "Wesly Jambarapu",
     role: "CEO & Founder",
     bio: "As CEO of LCM, I pioneer breakthrough solution of LCM that enable electric vehicles to charge while in motion",
-    image: "src/assets/Wes.webp",
+    image: WesImage,
     social: {
       linkedin: "https://www.linkedin.com/in/wesly-j/",
       email: "wesly.lcm@gmail.com"
@@ -95,27 +111,17 @@ const teamMembers: TeamMemberProps[] = [
     name: "Jayshri Bej",
     role: "Co-Founder & CRO",
     bio: "As CRO of LCM, I steer project management, ensuring our solutions meet real-world needs and scale effectively",
-    image: "src/assets/Jay.webp",
+    image: JayImage,
     social: {
       linkedin: "https://www.linkedin.com/in/jayshri-bej/",
       email: "jayshribej7@gmail.com"
     }
   },
   {
-    name: "Anil Kumar",
-    role: "Co-Founder & CPO",
-    bio: "Former aerospace engineer specializing in airflow dynamics and propulsion systems with experience at Boeing and SpaceX.",
-    image: "src/assets/Ani.webp",
-    social: {
-      linkedin: "https://www.linkedin.com/in/anilkumar-pidamarthi/",
-      email: "anilkumarpidamarthi123@gmail.com"
-    }
-  },
-  {
     name: "Naveen Islavath",
     role: "Co-Founder & CFO",
     bio: "As CFO, I manage financial operations and drive strategic partnerships to fuel LCM's growth.",
-    image: "src/assets/Nav.webp",
+    image: NavImage,
     social: {
       linkedin: "https://www.linkedin.com/in/naveen-islavath-b992021ba",
       email: "naveenssc2019@gmail.com"
@@ -125,7 +131,7 @@ const teamMembers: TeamMemberProps[] = [
     name: "Durga Prasad",
     role: "CTO",
     bio: "As CTO, I architect and drive the core technology powering LCM's breakthrough EV charging solutions.",
-    image: "src/assets/Dur.webp",
+    image: DurImage,
     social: {
       linkedin: "https://www.linkedin.com/in/durga-prasad-nuthalapati-646b73233/",
       email: "durgaprasad69110@gmail.com"
@@ -135,7 +141,7 @@ const teamMembers: TeamMemberProps[] = [
     name: "Chethan Ashray C",
     role: "COO",
     bio: "As COO, I streamline operations at LCM to ensure seamless delivery of innovative EV charging solutions.",
-    image: "src/assets/che.webp",
+    image: CheImage,
     social: {
       linkedin: "https://www.linkedin.com/in/chethan-ashray-1351b0329",
       email: "chethanashray16@gmail.com"

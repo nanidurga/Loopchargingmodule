@@ -1,7 +1,19 @@
 import React from 'react';
 import { ArrowRight, PlugZap, UserPlus } from 'lucide-react';
+import L1Image from '../../assets/L1.webp';
+import { scrollToContact } from '../../utils/navigation';
 
 const HeroSection: React.FC = () => {
+  const handleDemoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToContact('demo');
+  };
+
+  const handlePartnershipClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToContact('partnership');
+  };
+
   return (
     <section className="relative pt-24 pb-20 md:pt-32 md:pb-24 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 overflow-hidden">
       {/* Background elements */}
@@ -22,12 +34,14 @@ const HeroSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#contact"
+                onClick={handleDemoClick}
                 className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full font-medium transition-colors inline-flex items-center justify-center"
               >
                 <PlugZap className="mr-2 h-5 w-5" /> Book a Demo
               </a>
               <a
                 href="#contact"
+                onClick={handlePartnershipClick}
                 className="bg-dark-700/50 hover:bg-dark-700 backdrop-blur-sm text-white border border-white/20 px-6 py-3 rounded-full font-medium transition-colors inline-flex items-center justify-center"
               >
                 <UserPlus className="mr-2 h-5 w-5" /> Contact for Partnership
@@ -39,9 +53,11 @@ const HeroSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-2xl blur-xl"></div>
             <div className="relative bg-dark-800/80 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-xl animate-float">
               <img
-                src="src/assets/L1.webp"
+                src={L1Image}
                 alt="LCM Technology Render"
                 className="w-full h-auto rounded-lg mb-4"
+                loading="eager"
+                draggable="false"
               />
               <div className="bg-dark-900/50 backdrop-blur-sm rounded-lg p-4 border border-white/10">
                 <h3 className="font-display font-semibold text-lg text-white mb-2">Loop Charging Module</h3>
