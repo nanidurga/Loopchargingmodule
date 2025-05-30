@@ -1,24 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
 import { handleNavigation } from '../../utils/navigation';
 
 const navLinks = [
-  { name: 'Technology', href: '/#technology' },
-  { name: 'Benefits', href: '/#benefits' },
-  { name: 'Integration', href: '/#integration' },
-  { name: 'Timeline', href: '#/timeline' },
-  { name: 'Team', href: '#/team' },
-  { name: 'Careers', href: '#/careers' },
-  { name: 'FAQ', href: '#/faq' },
+  { name: 'Technology', href: '/#technology', isSection: true },
+  { name: 'Benefits', href: '/#benefits', isSection: true },
+  { name: 'Integration', href: '/#integration', isSection: true },
+  { name: 'Timeline', href: '/timeline', isSection: false },
+  { name: 'Team', href: '/team', isSection: false },
+  { name: 'Careers', href: '/careers', isSection: false },
+  { name: 'FAQ', href: '/faq', isSection: false },
 ];
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMobileMenu = useCallback(() => {
     setIsOpen(!isOpen);
@@ -73,18 +74,28 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors"
-                onClick={(e) => handleNavigation(link.href, e)}
-              >
-                {link.name}
-              </Link>
+              link.isSection ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                  onClick={(e) => handleNavigation(link.href, e, location, navigate)}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             <Link
               to="/#contact"
-              onClick={(e) => handleNavigation('/#contact', e)}
+              onClick={(e) => handleNavigation('/#contact', e, location, navigate)}
               className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-full text-sm font-medium transition-colors"
             >
               Contact Us
@@ -116,22 +127,33 @@ const Header: React.FC = () => {
             <nav className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className="text-base font-medium text-white/70 hover:text-white transition-colors"
-                    onClick={(e) => {
-                      handleNavigation(link.href, e);
-                      closeMobileMenu();
-                    }}
-                  >
-                    {link.name}
-                  </Link>
+                  link.isSection ? (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="text-base font-medium text-white/70 hover:text-white transition-colors"
+                      onClick={(e) => {
+                        handleNavigation(link.href, e, location, navigate);
+                        closeMobileMenu();
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="text-base font-medium text-white/70 hover:text-white transition-colors"
+                      onClick={closeMobileMenu}
+                    >
+                      {link.name}
+                    </Link>
+                  )
                 ))}
                 <Link
                   to="/#contact"
                   onClick={(e) => {
-                    handleNavigation('/#contact', e);
+                    handleNavigation('/#contact', e, location, navigate);
                     closeMobileMenu();
                   }}
                   className="text-base font-medium text-primary-500 hover:text-primary-400 transition-colors"

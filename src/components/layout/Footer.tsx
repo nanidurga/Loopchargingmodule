@@ -3,15 +3,30 @@ import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
 import logo from '../../assets/logo.png';
 import { handleNavigation } from '../../utils/navigation';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+const sectionLinks = [
+  { name: 'Technology', href: '/#technology' },
+  { name: 'Benefits', href: '/#benefits' },
+  { name: 'Integration', href: '/#integration' },
+];
+const pageLinks = [
+  { name: 'Team', href: '/team' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'FAQ', href: '/faq' },
+];
 
 const Footer: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <footer className="bg-dark-800 border-t border-white/10">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="space-y-4 text-center md:text-left">
-            <Link to="/#/" className="inline-block">
+            <Link to="/" className="inline-block">
               <img 
                 src={logo} 
                 alt="LCM Logo" 
@@ -28,25 +43,15 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-display text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
+              {sectionLinks.map(link => (
+                <li key={link.name}>
+                  <Link to={link.href} onClick={e => handleNavigation(link.href, e, location, navigate)} className="text-white/70 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link to="/#technology" onClick={(e) => handleNavigation('/#technology', e)} className="text-white/70 hover:text-white transition-colors">
-                  Technology
-                </Link>
-              </li>
-              <li>
-                <Link to="/#benefits" onClick={(e) => handleNavigation('/#benefits', e)} className="text-white/70 hover:text-white transition-colors">
-                  Benefits
-                </Link>
-              </li>
-              <li>
-                <Link to="/#integration" onClick={(e) => handleNavigation('/#integration', e)} className="text-white/70 hover:text-white transition-colors">
-                  Integration
-                </Link>
-              </li>
-              <li>
-                <Link to="#/team" className="text-white/70 hover:text-white transition-colors">
-                  Team
-                </Link>
+                <Link to="/team" className="text-white/70 hover:text-white transition-colors">Team</Link>
               </li>
             </ul>
           </div>
@@ -56,19 +61,13 @@ const Footer: React.FC = () => {
             <h3 className="font-display text-lg font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="#/careers" className="text-white/70 hover:text-white transition-colors">
-                  Careers
-                </Link>
+                <Link to="/careers" className="text-white/70 hover:text-white transition-colors">Careers</Link>
               </li>
               <li>
-                <Link to="#/faq" className="text-white/70 hover:text-white transition-colors">
-                  FAQ
-                </Link>
+                <Link to="/faq" className="text-white/70 hover:text-white transition-colors">FAQ</Link>
               </li>
               <li>
-                <Link to="/#contact" onClick={(e) => handleNavigation('/#contact', e)} className="text-white/70 hover:text-white transition-colors">
-                  Contact
-                </Link>
+                <Link to="/#contact" onClick={e => handleNavigation('/#contact', e, location, navigate)} className="text-white/70 hover:text-white transition-colors">Contact</Link>
               </li>
             </ul>
           </div>

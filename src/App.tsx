@@ -1,5 +1,5 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Layout from './components/layout/Layout';
 import HeroSection from './components/home/HeroSection';
@@ -167,7 +167,7 @@ function App() {
 
 export default function WrappedApp() {
   return (
-    <Router>
+    <Router basename="/Loopchargingmodule">
       <App />
     </Router>
   );

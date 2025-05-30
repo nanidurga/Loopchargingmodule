@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Users, Rocket, Mail, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Import team images
 import WesImage from '../assets/Wes.webp';
@@ -246,14 +247,18 @@ const Team: React.FC = () => (
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
             Join our team of innovators and help revolutionize how electric vehicles charge.
           </p>
-          <motion.a 
-            href="#/careers"
+          <Link 
+            to="/careers"
             className="inline-block bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-full font-medium transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
-            Join the Team
-          </motion.a>
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block"
+            >
+              Join the Team
+            </motion.span>
+          </Link>
         </motion.div>
       </div>
     </section>
