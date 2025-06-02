@@ -2,11 +2,11 @@ import React, { useState, useCallback, memo } from 'react';
 import { Wind, Cog, Gauge, Zap } from 'lucide-react';
 
 // Instead, define image paths:
-const propellerImage = '/Loopchargingmodule/assets/propeller2.webp';
-const torqueConverterImage = '/Loopchargingmodule/assets/torque.webp';
-const gearSetImage = '/Loopchargingmodule/assets/Gearset.webp';
-const generatorImage = '/Loopchargingmodule/assets/Generator.webp';
-const defaultEvCarImage = '/Loopchargingmodule/assets/L2.webp';
+const propellerImage = '/assets/propeller2.webp';
+const torqueConverterImage = '/assets/torque.webp';
+const gearSetImage = '/assets/Gearset.webp';
+const generatorImage = '/assets/Generator.webp';
+const defaultEvCarImage = '/assets/L2.webp';
 
 // Simple image display component
 const TechImageDisplay = memo(({ 

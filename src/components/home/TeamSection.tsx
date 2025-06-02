@@ -109,7 +109,7 @@ const teamMembers: TeamMemberProps[] = [
   },
   {
     name: "Anil Kumar",
-    role: "Founder & CEO",
+    role: "Co-Founder & CPO",
     bio: "Experienced in EV technology and sustainable energy solutions.",
     image: AniImage,
     social: {
