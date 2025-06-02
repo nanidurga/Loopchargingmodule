@@ -1,5 +1,6 @@
 import React from 'react';
 import { Wind, Battery, Gauge, Activity, Leaf, Building2 } from 'lucide-react';
+import LCMImage from '../../assets/difdesign.webp';
 
 interface BenefitCardProps {
   icon: React.ReactNode;
@@ -102,7 +103,7 @@ const BenefitsSection: React.FC = () => {
             </div>
             <div className="bg-dark-800 border border-white/10 rounded-xl overflow-hidden">
               <img 
-                src="https://images.pexels.com/photos/3605329/pexels-photo-3605329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                src={LCMImage} 
                 alt="LCM Technology Closeup" 
                 className="w-full h-auto"
               />

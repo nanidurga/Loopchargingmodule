@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShieldCheck, Cpu, Cable, Car } from 'lucide-react';
 import { scrollToContact } from '../../utils/navigation';
+import manufactIMG from '../../assets/Manufacturing.webp';
 
 interface IntegrationFeatureProps {
   icon: React.ReactNode;
@@ -67,7 +68,7 @@ const IntegrationSection: React.FC = () => {
           <div>
             <div className="bg-dark-800 border border-white/10 rounded-2xl overflow-hidden shadow-lg mb-6">
               <img 
-                src="https://images.pexels.com/photos/3822843/pexels-photo-3822843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                src={manufactIMG} 
                 alt="EV CAD Diagram with LCM" 
                 className="w-full h-auto"
                 loading="lazy"
