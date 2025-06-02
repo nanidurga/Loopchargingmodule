@@ -50,10 +50,10 @@ const coreTeam: TeamMember[] = [
   {
     name: "Anil Kumar",
     role: "Co-Founder & CPO",
-    background: "Former aerospace engineer specializing in airflow dynamics and propulsion systems with experience at Boeing and SpaceX.",
+    background: "As CPO, I bridge technology and business to create products that redefine industry standards.",
     image: AniImage,
     social: {
-      linkedin: "https://www.linkedin.com/in/anilkumar-pidamarthi/",
+      linkedin: "https://www.linkedin.com/in/anil-kumar-pidamarthi-0b1b3b1b2/",
       email: "anilkumarpidamarthi123@gmail.com"
     }
   },
