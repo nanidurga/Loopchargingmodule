@@ -2,7 +2,7 @@
   "name": "lcm-website",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://nanidurga.github.io/Loopchargingmodule/",
+  "homepage": "https://lcmev.com",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",

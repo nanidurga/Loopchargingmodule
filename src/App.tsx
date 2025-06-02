@@ -167,7 +167,7 @@ function App() {
 
 export default function WrappedApp() {
   return (
-    <Router basename="/Loopchargingmodule">
+    <Router basename="/">
       <App />
     </Router>
   );
