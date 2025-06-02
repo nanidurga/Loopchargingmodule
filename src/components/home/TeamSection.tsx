@@ -113,7 +113,7 @@ const teamMembers: TeamMemberProps[] = [
     bio: "As CPO, I bridge technology and business to create products that redefine industry standards.",
     image: AniImage,
     social: {
-      linkedin: "https://www.linkedin.com/in/anil-kumar-pidamarthi-0b1b3b1b2/",
+      linkedin: "https://www.linkedin.com/in/anilkumar-pidamarthi/",
       email: "anilkumarpidamarthi123@gmail.com"
     }
   },
