@@ -16,8 +16,6 @@ interface JobPosition {
   overview: string;
   responsibilities: string[];
   requirements: string[];
-  kpis: string[];
-  perks: string[];
   formLink: string;
 }
 
@@ -47,17 +45,6 @@ const Careers: React.FC = () => {
         "Strong problem-solving and teamwork skills",
         "Pursuing/completed Bachelor's/Master's in Mechanical/Automotive Engineering",
       ],
-      kpis: [
-        "Deliver 3 optimized CAD models",
-        "Achieve 10-15% weight reduction",
-        "Ensure 90%+ CAM manufacturability",
-        "Submit thermal/structural improvement reports",
-      ],
-      perks: [
-        "Mentorship from IIT alumni",
-        "Hands-on EV infrastructure experience",
-        "Certificate and future role opportunities",
-      ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
     },
     {
@@ -83,16 +70,6 @@ const Careers: React.FC = () => {
         "Familiarity with embedded systems and protocols",
         "Pursuing/completed Bachelor's/Master's in Electrical/Electronics/Embedded Systems",
       ],
-      kpis: [
-        "Deliver functional PCB prototype",
-        "Develop and validate SOC/SOH algorithms",
-        "Integrate BMS with dummy battery pack",
-      ],
-      perks: [
-        "Mentorship from IIT alumni",
-        "Hands-on BMS and EV prototyping",
-        "Certificate and future role opportunities",
-      ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
     },
     {
@@ -116,16 +93,6 @@ const Careers: React.FC = () => {
         "Understanding of EV electronics architecture",
         "Familiarity with ECU/VCU and protocols",
         "Pursuing/completed Bachelor's/Master's in Electrical/Electronics/Automotive Engineering",
-      ],
-      kpis: [
-        "Deliver 3 optimized circuit designs",
-        "Achieve 95%+ compatibility with ECU/VCU",
-        "Reduce inefficiencies by 10–15%",
-      ],
-      perks: [
-        "Mentorship from IIT alumni",
-        "Hands-on EV infrastructure experience",
-        "Certificate and future role opportunities",
       ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
     },
@@ -151,117 +118,95 @@ const Careers: React.FC = () => {
         "Familiarity with ECU/VCU and protocols",
         "Pursuing/completed Bachelor's/Master's in Electrical/Automotive Engineering",
       ],
-      kpis: [
-        "Deliver optimized CAD model",
-        "Complete circuit schematics",
-        "Achieve 100% safety compliance",
-      ],
-      perks: [
-        "Mentorship from IIT alumni",
-        "Hands-on EV infrastructure experience",
-        "Certificate and future role opportunities",
-      ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
     },
     {
       title: "Power Systems Engineer",
       location: "Bengaluru, Karnataka",
       duration: "Full-Time",
-      stipend: "6L-8L",
-      about:
-        "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, at the forefront of India's sustainable mobility revolution. Backed by leading incubators and equity-free grants,and we are a funded startup, we are building next-generation electric vehicles and charging infrastructure.",
-      overview:
-        "Lead the design, development, and validation of high-voltage power systems for LCM's first EV prototype. Own end-to-end responsibility for battery systems, charging infrastructure, and power electronics, ensuring compliance, cost efficiency, and scalability.",
+      stipend: "Not Disclosed", 
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants And we are a funded startup, we're driving India's sustainable mobility revolution.",
+      overview: "Lead the design, development, and validation of all high-voltage power systems for LCM's EV prototype. Own end-to-end responsibility for battery systems, charging infrastructure, and power electronics while ensuring compliance, cost efficiency, and scalability.",
       responsibilities: [
-        "Design 400V-800V battery packs with integrated thermal management and battery management system (BMS)",
-        "Optimize energy density (>250 Wh/kg) while meeting ISO 26262 functional safety standards",
-        "Collaborate with cell suppliers (NMC/LFP) to reduce pack-level costs to <$105/kWh",
-        "Develop bi-directional DC-DC converters (3kW-50kW) and traction inverters (150kW+) using SiC/GaN semiconductors",
-        "Achieve >95% efficiency in power conversion stages (AC-DC, DC-DC)",
-        "Implement V2L/V2G capabilities for vehicle-to-grid integration",
-        "Design CCS/CHAdeMO-compliant charging systems with <30-minute DC fast charging (10-80% SOC)",
-        "Integrate ISO 15118 Plug & Charge functionality for seamless user authentication",
-        "Conduct HALT/HASS testing (-40°C to +85°C operational range)",
-        "Ensure compliance with UN R100 (battery safety) and EU 2019/631 (emissions)",
-        "Perform FMEA for critical systems and mitigate risks through design iterations",
-        "Reduce BOM costs by 20% through design-for-manufacturing (DFM) and supplier negotiations",
-        "Source 30% of components locally to minimize logistics costs and lead times"
+        "Battery & High-Voltage Systems:",
+        "- Design 400V-800V battery packs with integrated liquid cooling thermal management",
+        "- Integrate in-house designed BMS for battery packs",
+        "- Optimize energy density (>250 Wh/kg) while meeting ISO 26262 safety standards",
+        "Power Electronics Development:",
+        "- Develop bi-directional DC-DC converters (3kW-50kW) using SiC/GaN semiconductors",
+        "- Achieve >95% efficiency in power conversion stages (AC-DC, DC-DC)",
+        "- Implement V2L/V2G capabilities for vehicle-to-grid integration",
+        "Charging Infrastructure:",
+        "- Design CCS2/Type-2 compliant charging systems with <30-minute DC fast charging (10-80% SOC)",
+        "- Integrate ISO 15118 Plug & Charge functionality for user authentication",
+        "Reliability & Compliance:",
+        "- Conduct HALT/HASS testing (-40°C to +85°C operational range)",
+        "- Ensure UN R100/AIS-156 battery safety compliance",
+        "- Perform FMEA for critical systems and design iterations",
+        "Cost Optimization:",
+        "- Reduce BOM costs by 20% through DFM and supplier negotiations",
+        "- Source 30% components locally to minimize logistics costs"
       ],
       requirements: [
-        "MS/PhD in Electrical Engineering (Power Systems focus)",
-        "3-5 years in EV/hybrid systems (OEM or Tier 1 supplier)",
-        "Portfolio demonstrating ≥2 production-ready battery or inverter designs",
-        "Core expertise in battery pack design (cell-to-pack integration, thermal runaway mitigation)",
-        "Expertise in power electronics topologies (LLC resonant converters, three-phase inverters)",
-        "High-voltage safety protocols (ISO 6469, UL 2580)",
-        "Proficiency with simulation tools: PLECS, ANSYS Q3D, MATLAB/Simulink",
-        "Experience with Keysight PathWave, thermal imaging cameras",
-        "Compliance tools: ReliaSoft, Siemens Polarion",
-        "Startup experience preferred (adaptability to resource constraints)",
-        "Preferred certifications: AEF Certified High Voltage Specialist, IPC-9592B"
+        "Education: B.E/B.Tech/M.E/M.Tech in Electrical Engineering (Power Systems Focus)",
+        "Technical Skills:",
+        "- Battery pack design (cell-to-pack integration, thermal runaway mitigation)",
+        "- Power electronics topologies (LLC resonant converters, three-phase inverters)",
+        "Experience:",
+        "- 3-5 years in EV/hybrid systems (OEM/Tier 1 supplier)",
+        "- Portfolio with ≥2 production-ready battery/inverter designs",
+        "- Startup experience preferred",
+        "Certifications:",
+        "- AEF Certified High Voltage Specialist",
+        "- IPC-9592B (Power Electronics Assembly Certification)"
       ],
-      kpis: [
-        "Develop and validate 2+ production-ready battery/inverter designs",
-        "Achieve >95% efficiency in power conversion systems",
-        "Reduce BOM costs by 20% through DFM and supplier negotiations",
-        "Ensure compliance with all relevant safety and emissions standards",
-        "Complete HALT/HASS testing across full operational temperature range"
-      ],
-      perks: [
-        "Mentorship from IIT alumni and EV industry experts",
-        "Ownership of core EV powertrain systems",
-        "Opportunities for rapid career growth in a high-impact startup environment"
-      ],
+      
       formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
-    },
+    },    
     {
       title: "Electrical Design & Integration Engineer",
       location: "Bengaluru, Karnataka",
       duration: "Full-Time",
-      stipend: "6L-8L",
-      about:
-        "Join LCM, an innovative EV tech startup founded by IIT Kharagpur alumni, driving India's sustainable mobility revoluti on. Backed by top incubators and equity-free grants,and we are a funded startup, we are building advanced electric vehicles and infrastructure.",
-      overview:
-        "Lead the design, integration, and validation of all electrical systems for LCM's first EV prototype. Own end-to-end responsibility for schematics, wiring harnesses, subsystem integration, and cross-functional debugging to ensure seamless vehicle operation.",
+      stipend: "Not Disclosed",
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants And we are a funded startup, we're driving India's sustainable mobility revolution.",
+      overview: "Lead the design, development, and integration of all electrical systems for LCM's EV prototype. Own end-to-end responsibility for schematics, wiring harnesses, subsystem integration, and cross-functional debugging to ensure seamless vehicle operation.",
       responsibilities: [
-        "Create vehicle-level schematics for wiring harnesses, PCBs, and LV/HV distribution systems using Siemens Capital or Zuken E3",
-        "Design zonal E/E architecture with CAN FD, Automotive Ethernet (10BASE-T1S), and fail-operational power networks",
-        "Optimize EMC performance to meet CISPR 25 Class 5 standards",
-        "Integrate battery systems, motors, charging modules, and ADAS sensors into the vehicle platform",
-        "Develop HIL test benches (dSPACE SCALEXIO) for validation of ECUs and network communication",
-        "Resolve cross-domain integration issues (mechanical, thermal, software) during prototype bring-up",
-        "Ensure compliance with ISO 26262 (functional safety) and ISO/SAE 21434 (cybersecurity)",
-        "Reduce wiring harness costs by 15% through DFM and supplier negotiations",
-        "Source 40% of connectors and relays locally to minimize lead times",
-        "Build and test 3D-printed harness prototypes for fitment and routing validation",
-        "Conduct EMI/EMC testing and generate reports for certification (e.g., FCC, CE)",
-        "Collaborate with validation teams to achieve ASIL-B/C compliance for safety-critical systems"
+        "Electrical System Design:",
+        "- Create vehicle-level schematics for wiring harnesses, PCBs, and LV/HV distribution systems using Siemens Capital or Zuken E3.",
+        "- Design zonal E/E architecture with CAN FD, Automotive Ethernet (10BASE-T1S), and fail-operational power networks.",
+        "- Optimize EMC performance to meet IS 6873-1 (2010)/CISPR 25 Class 5 standards.",
+        "Subsystem Integration:",
+        "- Integrate battery systems, motors, charging modules, and ADAS sensors into the vehicle platform.",
+        "- Develop HIL test benches (dSPACE SCALEXIO) for validation of ECUs and network communication.",
+        "- Resolve cross-domain integration issues (mechanical, thermal, software) during prototype bring-up.",
+        "- Validate 3D routing (CATIA/NX) with 15mm bend radius minima and >5mm gap from chassis components, ensuring compliance with UL 1063 and SAE J1128.",
+        "Compliance & Cost Optimization:",
+        "- Ensure compliance with ISO 26262 (functional safety) and ISO/SAE 21434 (cybersecurity).",
+        "- Reduce wiring harness costs by 15% through DFM, supplier negotiations and collaboration with local vendors.",
+        "- Validate connectors by reviewing manufacturer datasheets for current, voltage, temperature, and vibration ratings, ensuring compliance with USCAR-2 (sealing) and LV214 (automotive durability).",
+        "Prototyping & Validation:",
+        "- Build and test 3D-printed harness prototypes for fitment and routing validation.",
+        "- Conduct EMI/EMC testing and generate reports for certification (e.g., FCC, CE).",
+        "- Collaborate with validation teams to achieve ASIL-B/C compliance for safety-critical systems."
       ],
       requirements: [
-        "BS/MS in Electrical Engineering or related field",
-        "3-5 years in automotive electrical systems (OEM/Tier 1)",
-        "Portfolio showing ≥2 production-ready harness or ECU designs",
-        "Core expertise in zonal E/E architecture design",
-        "Experience with high-speed communication protocols (CAN FD, Automotive Ethernet)",
-        "DFM for wiring harnesses and PCB assemblies",
-        "Proficiency with Siemens Capital, ANSYS SIwave, SolidWorks Electrical",
-        "Simulation experience with PREEvision, MATLAB/Simulink",
-        "Testing experience with Vector CANoe, oscilloscopes, network analyzers",
-        "Startup experience preferred (adaptability to rapid iteration)",
-        "Preferred: IPC/WHMA-A-620 (Harness Certification), Autosar Classic/Adaptive foundational knowledge"
-      ],
-      kpis: [
-        "Deliver 2+ production-ready harness or ECU designs",
-        "Achieve 15% cost reduction in wiring harnesses",
-        "Ensure CISPR 25 Class 5 EMC compliance",
-        "Complete EMI/EMC certification reports (FCC, CE)",
-        "Achieve ASIL-B/C compliance for safety-critical systems"
-      ],
-      perks: [
-        "Mentorship from IIT alumni and senior automotive engineers",
-        "Ownership of core vehicle electrical architecture",
-        "Opportunities for rapid career growth in a high-impact startup environment",
-        "Hands-on experience with cutting-edge EV technology"
+        "Education:",
+        "- Required: B.E or B.Tech/M.E or M.Tech in Electrical Engineering or related field.",
+        "Technical Skills:",
+        "- Zonal E/E architecture design.",
+        "- High-speed communication protocols (CAN FD, Automotive Ethernet).",
+        "- DFM for wiring harnesses and PCB assemblies.",
+        "Tools:",
+        "- Design: Siemens Capital, ANSYS SIwave, SolidWorks Electrical.",
+        "- Simulation: PREEvision, MATLAB/Simulink.",
+        "- Testing: Vector CANoe, oscilloscopes, network analyzers.",
+        "Experience:",
+        "- 3-5 years in automotive electrical systems (OEM/Tier 1).",
+        "- Portfolio showing ≥2 production-ready harness or ECU designs.",
+        "- Startup experience preferred (adaptability to rapid iteration).",
+        "Certifications:",
+        "- IPC/WHMA-A-620 (Harness Certification).",
+        "- Autosar Classic/Adaptive foundational knowledge."
       ],
       formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
     },
@@ -269,48 +214,53 @@ const Careers: React.FC = () => {
       title: "Embedded Systems & Controls Engineer",
       location: "Bengaluru, Karnataka",
       duration: "Full-Time",
-      stipend: "6L-8L",
-      about:
-        "Join LCM, an EV tech startup founded by IIT Kharagpur alumni, at the forefront of India's sustainable mobility revolution. Backed by leading incubators and equity-free grants,and we are a funded startup, we are building next-generation electric vehicles and intelligent control systems.",
-      overview:
-        "Lead the design and integration of embedded hardware and control systems for LCM's first EV prototype. Own end-to-end responsibility for motor control, battery management, and vehicle communication networks while ensuring safety, efficiency, and cost-effectiveness.",
+      stipend: "Not Disclosed",
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants And we are a funded startup, we're driving India's sustainable mobility revolution.",
+      overview: "Lead the design and integration of embedded hardware and control systems for the LCM's EV prototype. Own end-to-end responsibility for motor control, battery management, and vehicle communication networks while ensuring safety, efficiency, and cost-effectiveness.",
       responsibilities: [
-        "Design ASIL-D compliant PCBs for motor control units (MCUs) and battery management systems (BMS)",
-        "Develop 24-48V auxiliary power distribution systems with ≤5% voltage drop",
-        "Implement CAN FD networks (1-8 Mbps) for real-time communication between ECUs",
-        "Create field-oriented control (FOC) algorithms for PMSMs and MPPT algorithms for DC-DC converters",
-        "Develop thermoelectric cooling control logic for battery packs using PID tuning",
-        "Implement ISO 14229-compliant diagnostics (UDS/OBD-II) for fault detection",
-        "Interface Hall-effect sensors (0.1% linearity) and IMUs for vehicle dynamics control",
-        "Design fail-operational circuits for safety-critical systems (e.g., braking, steering)",
-        "Ensure ISO 26262 ASIL-D compliance for motor control systems",
-        "Reduce PCB assembly costs by 20% through DFM and JLCPCB partnerships"
+        "Embedded Hardware Design:",
+        "- Design ASIL-D compliant PCBs for motor control units (MCUs) and battery management systems (BMS).",
+        "- Develop 48V auxiliary power distribution systems with ≤5% voltage drop.",
+        "- Implement CAN FD networks (1-8 Mbps) for real-time communication between ECUs.",
+        "- Implement I2C for Sensor Networks and Safety Systems.",
+        "- Implement SPI for BMS, ADAS and Memory Storage.",
+        "Control Systems Development:",
+        "- Create field-oriented control (FOC) algorithms for permanent magnet synchronous motors (PMSMs) and MPPT algorithms for DC-DC converters.",
+        "- Develop thermoelectric cooling control logic for battery packs using PID tuning.",
+        "- Implement ISO 14229-compliant diagnostics (UDS/OBD-II) for fault detection.",
+        "- Develop fault-clearing GUIs (Qt/C#) compatible with existing ECUs, enabling one-click DTC reset and log export per SAE J1939-73/AIS-004,049.",
+        "- Support legacy systems via J2534 pass-thru integration for reprogramming.",
+        "Sensor-Actuator Integration:",
+        "- Interface Hall-effect sensors (0.1% linearity) and IMUs for vehicle dynamics control.",
+        "- Design fail-operational circuits for safety-critical systems (e.g., braking, steering).",
+        "Testing & Validation:",
+        "- HIL Validation: Develop dSPACE SCALEXIO test benches for ASIL-D systems (motor control, BMS), automating test cases in Simulink/TAE to achieve 98% model coverage.",
+        "- Functional Safety Testing: Execute fault injection tests (ISO 26262) for MCU/BMS PCBs, including stuck-at-0/1 failures in CAN FD transceivers.",
+        "- Environmental Testing: Validate designs under -40°C to +125°C thermal cycles and 20G vibration profiles per ISO 16750-3/4.",
+        "- EMI/EMC Compliance: Perform CISPR 25 radiated emissions testing for 48V systems, ensuring ≤30 dBμV/m margins.",
+        "Compliance & Cost Optimization:",
+        "- Ensure ISO 26262 ASIL-D compliance for motor control systems.",
+        "- Reduce PCB assembly costs by 20% through DFM and JLCPCB partnerships.",
+        "- Negotiate volume pricing and NPI terms with domestic partners for critical components, reducing lead times by 30% versus offshore procurement."
       ],
       requirements: [
-        "BS/MS in Electrical Engineering or Robotics",
-        "3-5 years in automotive embedded systems (OEM/Tier 1)",
-        "Portfolio demonstrating ≥2 production-ready ECU designs",
-        "Expertise in motor control algorithms (FOC, MTPA)",
-        "Experience in PCB design (4-8 layer, impedance-controlled)",
-        "AUTOSAR-compliant software architecture",
-        "Proficiency with Altium/KiCad, MATLAB/Simulink",
-        "Testing experience with Lauterbach TRACE32, Vector CANoe",
-        "Version control: Git, Bitbucket",
-        "Startup experience preferred (resource-constrained R&D)",
-        "Preferred: AUTOSAR Certified Engineer, IPC-A-610 (PCB Acceptability)"
-      ],
-      kpis: [
-        "Deliver 2+ production-ready ECU designs",
-        "Achieve ≤5% voltage drop in auxiliary power systems",
-        "Reduce PCB assembly costs by 20% through DFM",
-        "Ensure ISO 26262 ASIL-D compliance for all control systems",
-        "Implement ISO 14229-compliant diagnostics across all ECUs"
-      ],
-      perks: [
-        "Mentorship from IIT alumni and senior embedded engineers",
-        "Ownership of core vehicle control and embedded systems",
-        "Opportunities for rapid career growth in a high-impact startup environment",
-        "Hands-on experience with cutting-edge EV and controls technology"
+        "Education:",
+        "- Required: B.E or B.Tech/M.E or M.Tech in Electronics and Communication Engineering or related field.",
+        "Technical Skills:",
+        "- Motor control algorithms (FOC, MTPA).",
+        "- PCB design (4-8 layer, impedance-controlled).",
+        "- AUTOSAR-compliant software architecture.",
+        "Tools:",
+        "- Design: Altium/Allegro/orCAD, MATLAB/Simulink.",
+        "- Testing: Lauterbach TRACE32, Vector CANoe.",
+        "- Version Control: Git, Bitbucket.",
+        "Experience:",
+        "- 3-5 years in automotive embedded systems (OEM/Tier 1).",
+        "- Portfolio demonstrating ≥2 production-ready ECU designs.",
+        "- Startup experience preferred (resource-constrained R&D).",
+        "Certifications:",
+        "- AUTOSAR Certified Engineer.",
+        "- IPC-A-610 (PCB Acceptability)."
       ],
       formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
     },
@@ -318,147 +268,219 @@ const Careers: React.FC = () => {
       title: "Mechanical Design & Integration Engineer",
       location: "Bengaluru, Karnataka",
       duration: "Full-Time",
-      stipend: "6L-8L",
-      about:
-        "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to India's sustainable mobility revolution. Backed by top incubators and equity-free grants,and we are a funded startup, we are building advanced electric vehicles with cutting-edge mechanical design.",
-      overview:
-        "As the Mechanical Design & Integration Engineer, you will lead the end-to-end design, modeling, and integration of all mechanical systems and components for our first electric vehicle. Collaborate cross-functionally to ensure all subsystems are engineered for performance, manufacturability, and seamless integration with electrical and thermal systems.",
+      stipend: "Not Disclosed",
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants And we are a funded startup, we're driving India's sustainable mobility revolution.",
+      overview: "Lead the end-to-end design, modeling, and integration of all mechanical systems and components for LCM's EV prototype. Work cross-functionally to ensure all subsystems (chassis, interiors, power electronics housings, etc.) are engineered for performance, manufacturability, and seamless integration with electrical and mechanical systems.",
       responsibilities: [
-        "Develop 3D CAD models and detailed drawings for chassis, body, battery enclosures, powertrain mounts, and interior modules using SolidWorks, CATIA, or Siemens NX",
-        "Design for manufacturability (DFM) and assembly (DFA), considering cost, material selection, and supplier capabilities",
-        "Engineer lightweight structures using advanced materials (aluminum, composites, high-strength steel)",
-        "Integrate mechanical components with electrical (battery, power electronics) and thermal systems, ensuring proper fit, function, and safety",
-        "Collaborate with electrical, thermal, and controls engineers to resolve packaging, mounting, and interface challenges",
-        "Lead packaging studies and digital mock-ups to optimize space utilization and accessibility",
-        "Build and test prototypes (physical and virtual) for critical assemblies (e.g., battery box, crash structures, seats)",
-        "Support validation through FEA (Finite Element Analysis) and physical testing (vibration, crash, thermal cycling)",
-        "Iterate designs based on test results, field feedback, and reliability data",
-        "Create and maintain BOMs, assembly instructions, and technical documentation",
-        "Ensure designs meet automotive safety standards (FMVSS, ECE, AIS), and support homologation efforts",
-        "Interface with suppliers for component sourcing, feasibility reviews, and cost negotiations",
-        "Support process development for prototype and low-volume manufacturing (sheet metal, plastics, casting, additive manufacturing)"
+        "Mechanical System Design:",
+        "- Develop 3D CAD models and detailed drawings for chassis, body, battery enclosures, powertrain mounts, and interior modules using tools like SolidWorks, CATIA, or Siemens NX.",
+        "- Design for manufacturability (DFM) and assembly (DFA), considering cost, material selection, and supplier capabilities.",
+        "- Familiarity with GD&T principles.",
+        "- Engineer lightweight structures using advanced materials (aluminum, composites, high-strength steel).",
+        "Subsystem Integration:",
+        "- Integrate mechanical components with electrical (battery, power electronics) and thermal systems, ensuring proper fit, function, and safety.",
+        "- Collaborate with electrical, thermal, and controls engineers to resolve packaging, mounting, and interface challenges.",
+        "- Lead packaging studies and digital mock-ups to optimize space utilization and accessibility.",
+        "Prototyping & Testing:",
+        "- Build and test prototypes (physical and virtual) for critical assemblies (e.g., battery box, crash structures, seats).",
+        "- Support validation through FEA (Finite Element Analysis) and physical testing (vibration, crash, thermal cycling).",
+        "- Iterate designs based on test results, field feedback, and reliability data.",
+        "Documentation & Compliance:",
+        "- Create and maintain BOMs, assembly instructions, and technical documentation.",
+        "- Ensure designs meet automotive safety standards (FMVSS, AIS, IS) and support homologation efforts.",
+        "Supplier & Manufacturing Liaison:",
+        "- Interface with suppliers for component sourcing, feasibility reviews, and cost negotiations.",
+        "- Support process development for prototype and low-volume manufacturing (sheet metal, plastics, casting, additive manufacturing, 3D Printing (FDM, SLA, SLM))."
       ],
       requirements: [
-        "B.E./B.Tech/M.E./M.Tech in Mechanical Engineering or related field",
-        "3-7 years in automotive or related mechanical design roles",
-        "Portfolio of at least one complete vehicle or major subsystem from concept to prototype/production",
-        "Proficiency in 3D CAD (SolidWorks, CATIA, or NX)",
-        "Strong understanding of material properties and manufacturing processes (sheet metal, injection molding, casting, composites)",
-        "Experience with structural and thermal analysis (FEA/CFD)",
-        "Knowledge of automotive standards and safety requirements",
-        "Startup or rapid prototyping experience preferred"
-      ],
-      kpis: [
-        "Deliver complete 3D CAD models and detailed drawings for major vehicle subsystems",
-        "Achieve weight and cost targets through DFM/DFA and material selection",
-        "Ensure all designs meet relevant automotive safety standards",
-        "Complete FEA/CFD validation and iterate designs based on test results",
-        "Support successful prototype builds and supplier engagement"
-      ],
-      perks: [
-        "Mentorship from IIT alumni and senior mechanical engineers",
-        "Ownership of core vehicle mechanical architecture",
-        "Opportunities for rapid career growth in a high-impact startup environment",
-        "Hands-on experience with advanced materials and manufacturing processes"
+        "Education:",
+        "- Required: B.E. or B.Tech/M.E. or M.Tech in Mechanical Engineering.",
+        "Technical Skills:",
+        "- Proficiency in CAD (SolidWorks, CATIA, or NX).",
+        "- Strong understanding of material properties and manufacturing processes (sheet metal, injection molding, casting, composites).",
+        "- Experience with structural and thermal analysis (FEA/CFD).",
+        "- Knowledge of automotive standards and safety requirements.",
+        "Experience:",
+        "- 3-7 years in automotive or related mechanical design roles.",
+        "- Portfolio of at least one complete vehicle or major subsystem from concept to prototype/production.",
+        "- Startup or rapid prototyping experience preferred.",
+        "Certification:",
+        "- SolidWorks Certified Professional/Expert (Preferred).",
+        "- Siemens NX CAD Associate/Professional (Optional)."
       ],
       formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
-    },
-    {
-      title: "Thermal & Structural Systems Engineer",
-      location: "Bengaluru, Karnataka",
-      duration: "Full-Time",
-      stipend: "6L-8L",
-      about:
-        "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, at the forefront of India's sustainable mobility revolution. Backed by leading incubators and equity-free grants,and we are a funded startup, we are building advanced electric vehicles with cutting-edge thermal and structural engineering.",
-      overview:
-        "Lead the design, analysis, and validation of thermal and structural systems for LCM's first EV prototype. Ensure battery packs, powertrains, and vehicle structures are thermally efficient, structurally robust, and reliable under real-world conditions.",
-      responsibilities: [
-        "Develop liquid-cooled battery thermal management systems with ±2°C cell temperature uniformity",
-        "Design heat pump-based HVAC systems for cabin and battery cooling/heating",
-        "Optimize refrigerant circuits (R1234yf/R744) for energy efficiency and SAE J2766 compliance",
-        "Perform FEA (static, dynamic, fatigue) on chassis, battery enclosures, and crash structures using ANSYS/ABAQUS",
-        "Conduct CFD simulations for airflow, thermal management, and aerodynamics to reduce drag coefficient by ≥10%",
-        "Validate designs through virtual and physical testing (vibration, thermal shock, crush tests)",
-        "Implement HALT/HASS testing (-40°C to +85°C) for battery packs and power electronics",
-        "Conduct FMEA and root cause analysis for field failures",
-        "Achieve ASIL-C/D compliance for safety-critical systems (ISO 26262)",
-        "Reduce thermal system energy consumption by ≥20% through control strategy optimization",
-        "Lower structural component mass by 15% using topology optimization and advanced materials (CFRP, aluminum alloys)"
-      ],
-      requirements: [
-        "B.E./B.Tech/M.E./M.Tech in Mechanical or Thermal Engineering",
-        "3-7 years in EV/hybrid thermal or structural engineering (OEM/Tier 1)",
-        "Portfolio demonstrating ≥1 production-ready thermal or structural system",
-        "Expertise in FEA/CFD tools (ANSYS, Star-CCM+, HyperMesh)",
-        "Proficiency in thermal system design (refrigerant circuits, cold plates, heat exchangers)",
-        "Knowledge of automotive materials (high-strength steel, composites, phase-change materials)",
-        "Startup experience preferred (agile prototyping, cost-driven design)",
-        "Certifications: ASQ Certified Reliability Engineer (preferred), AEF Thermal Management Specialist (optional)"
-      ],
-      kpis: [
-        "Deliver validated thermal and structural designs for battery, powertrain, and vehicle structures",
-        "Achieve ±2°C cell temperature uniformity in battery packs",
-        "Reduce drag coefficient by ≥10% through CFD-driven design",
-        "Lower component mass by 15% and thermal system energy use by ≥20%",
-        "Ensure ASIL-C/D compliance and successful completion of HALT/HASS testing"
-      ],
-      perks: [
-        "Mentorship from IIT alumni and senior thermal/structural engineers",
-        "Ownership of core EV thermal and structural architecture",
-        "Opportunities for rapid career growth in a high-impact startup environment",
-        "Hands-on experience with advanced simulation and testing tools"
-      ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
-    },
+    }, 
     {
       title: "Powertrain & Vehicle Dynamics Engineer",
       location: "Bengaluru, Karnataka",
       duration: "Full-Time",
-      stipend: "6L-8L",
-      about:
-        "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, at the forefront of India's sustainable mobility revolution. Backed by top incubators and equity-free grants,and we are a funded startup, we are building advanced electric vehicles with world-class powertrain and vehicle dynamics engineering.",
-      overview:
-        "Lead the design, integration, and optimization of the electric powertrain, chassis, and vehicle dynamics systems for LCM's first EV prototype. Ensure seamless interaction between propulsion, suspension, steering, and braking systems for superior performance, safety, and ride quality.",
+      stipend: "Not Disclosed",
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants,and we are a funded startup. we're driving India's sustainable mobility revolution.",
+      overview: "Lead the design, integration, and optimization of the electric powertrain, chassis, and vehicle dynamics systems for the LCM's EV prototype. Ensure seamless interaction between propulsion, suspension, steering, and braking systems for superior performance, safety, and ride quality.",
       responsibilities: [
-        "Design electric powertrain layouts (motor, inverter, gearbox) for optimal packaging and weight distribution",
-        "Develop single-speed gearboxes with ≥95% mechanical efficiency",
-        "Integrate regenerative braking systems to recover ≥20% of kinetic energy during deceleration",
-        "Design modular chassis structures (steel/aluminum) with torsional stiffness ≥25 kN·m/deg",
-        "Develop MacPherson strut/multi-link suspensions for urban/performance variants",
-        "Optimize unsprung mass through lightweight knuckle and control arm designs",
-        "Conduct lap simulations (MSC Adams/CarSim) to optimize handling balance (understeer gradient: 1-3 deg/g)",
-        "Tune damping profiles for ride comfort (ISO 2631-1 vibration dose value ≤0.8 m/s²)",
-        "Implement torque vectoring algorithms for enhanced cornering stability",
-        "Ensure FMVSS/ECE R13 compliance for braking systems (0.8g deceleration @ 100 km/h)",
-        "Validate rollover resistance (SSF ≥1.25) through CAE and physical testing",
-        "Reduce chassis weight by 15% via topology optimization and advanced materials (HSLA steel, CFRP)",
-        "Achieve powertrain cost ≤$1,500/kW through DFM and supplier partnerships"
+        "Powertrain Design:",
+        "- Design electric powertrain layouts (FWD, RWD, AWD) for optimal packaging and weight distribution.",
+        "- Develop single-speed gearboxes with ≥95% mechanical efficiency.",
+        "- Integrate regenerative braking systems to recover ≥20% of kinetic energy during deceleration.",
+        "Chassis & Suspension Engineering:",
+        "- Design modular chassis structures (steel/aluminum) with torsional stiffness ≥25 kN·m/deg.",
+        "- Develop MacPherson strut/multi-link suspensions for urban/performance variants.",
+        "- Optimize unsprung mass through lightweight knuckle and control arm designs.",
+        "Vehicle Dynamics Tuning:",
+        "- Conduct lap simulations (MSC Adams/CarSim) to optimize handling balance (understeer gradient: 1-3 deg/g).",
+        "- Tune damping profiles for ride comfort (ISO 2631-1 vibration dose value ≤0.8 m/s²).",
+        "- Implement torque vectoring algorithms for enhanced cornering stability.",
+        "Safety & Compliance:",
+        "- Ensure FMVSS/ECE R13 compliance for braking systems (0.8g deceleration @ 100 km/h).",
+        "- Validate rollover resistance (SSF ≥1.25) through CAE and physical testing.",
+        "Cost & Weight Optimization:",
+        "- Reduce chassis weight by 15% via topology optimization and advanced materials (Aluminum alloys, AHSS, FMLs, Magnesium Alloys).",
+        "- Achieve powertrain cost through DFM and supplier partnerships."
       ],
       requirements: [
-        "B.E./B.Tech/M.E./M.Tech in Mechanical or Automotive Engineering",
-        "3-7 years in automotive powertrain/chassis design (OEM/Tier 1)",
-        "Portfolio demonstrating ≥1 production vehicle or motorsport project",
-        "Expertise in powertrain/chassis CAD (SolidWorks, CATIA, NX)",
-        "Proficiency in FEA/CFD tools (ANSYS, HyperWorks, Star-CCM+)",
-        "Strong knowledge of vehicle dynamics principles (tire modeling, suspension kinematics)",
-        "Startup experience preferred (agile development, rapid prototyping)",
-        "Certifications: SAE Vehicle Dynamics Certification (preferred), ASQ Reliability Engineer (optional)"
+        "Education:",
+        "- Required: B.E or B.Tech/M.E or M.Tech in Mechanical Engineering/Automotive Engineering.",
+        "Technical Skills:",
+        "- Expertise in powertrain/chassis CAD (SolidWorks, CATIA, NX).",
+        "- Proficiency in FEA/CFD tools (ANSYS, HyperWorks, Star-CCM+).",
+        "- Strong knowledge of vehicle dynamics principles (tire modeling, suspension kinematics).",
+        "Experience:",
+        "- 3-7 years in automotive powertrain/chassis design (OEM/Tier 1).",
+        "- Portfolio demonstrating ≥1 production vehicle or motorsport project.",
+        "- Startup experience preferred (agile development, rapid prototyping).",
+        "Certification:",
+        "- SAE Vehicle Dynamics Certification (preferred).",
+        "- ASQ Reliability Engineer (optional)."
       ],
-      kpis: [
-        "Deliver validated powertrain and chassis designs meeting performance and safety targets",
-        "Achieve ≥95% gearbox efficiency and ≥20% energy recovery via regenerative braking",
-        "Reduce chassis weight by 15% and powertrain cost to ≤$1,500/kW",
-        "Ensure compliance with FMVSS/ECE R13 and rollover resistance standards",
-        "Optimize ride and handling through simulation and physical testing"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+    },  
+    {
+      title: "Thermal & Structural Systems Engineer",
+      location: "Bengaluru, Karnataka",
+      duration: "Full-Time",
+      stipend: "Not Disclosed",
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants,and we are a funded startup. we're driving India's sustainable mobility revolution.",
+      overview: "Lead the design, analysis, and validation of thermal and structural systems for the LCM's EV prototype. Ensure battery packs, powertrains, and vehicle structures are thermally efficient, structurally robust, and reliable under real-world conditions.",
+      responsibilities: [
+        "Thermal System Design:",
+        "- Develop liquid-cooled battery thermal management systems with ±2°C cell temperature uniformity.",
+        "- Design heat pump-based HVAC systems for battery cooling/heating.",
+        "- Optimize refrigerant circuits (R1234yf/R744) for energy efficiency and compliance with SAE J2766/AIS-153.",
+        "Structural Analysis & Optimization:",
+        "- Perform FEA (static, dynamic, fatigue) on chassis, battery enclosures, and crash structures using ANSYS/ABAQUS.",
+        "- Conduct CFD simulations for airflow, thermal management, and aerodynamics (reduce drag coefficient by ≥10%).",
+        "- Validate designs through virtual and physical testing (vibration, thermal shock, crush tests).",
+        "Reliability Engineering:",
+        "- Implement HALT/HASS testing (-40°C to +85°C) for battery packs and power electronics.",
+        "- Conduct FMEA and root cause analysis for field failures.",
+        "- Achieve ASIL-C/D compliance for safety-critical systems (ISO 26262).",
+        "Cost & Weight Optimization:",
+        "- Reduce thermal system energy consumption by ≥20% through control strategy optimization.",
+        "- Lower structural component mass by 15% using topology optimization and advanced materials (Aluminum alloys, AHSS, FMLs, Magnesium Alloys)."
       ],
-      perks: [
-        "Mentorship from IIT alumni and senior vehicle dynamics engineers",
-        "Ownership of core EV powertrain and dynamics architecture",
-        "Opportunities for rapid career growth in a high-impact startup environment",
-        "Hands-on experience with advanced simulation and testing tools"
+      requirements: [
+        "Education:",
+        "- Required: B.E or B.Tech/M.E or M.Tech in Mechanical Engineering/Automotive Engineering.",
+        "Technical Skills:",
+        "- Expertise in FEA/CFD tools (ANSYS, Star-CCM+, HyperMesh).",
+        "- Proficiency in thermal system design (refrigerant circuits, cold plates, heat exchangers).",
+        "- Knowledge of automotive materials (high-strength steel, composites, phase-change materials).",
+        "Experience:",
+        "- 3-7 years in EV/hybrid thermal or structural engineering (OEM/Tier 1).",
+        "- Portfolio demonstrating ≥1 production-ready thermal/structural system.",
+        "- Startup experience preferred (agile prototyping, cost-driven design).",
+        "Certifications:",
+        "- ASQ Certified Reliability Engineer (preferred).",
+        "- AEF Thermal Management Specialist (optional)."
       ],
       formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
     },
+    {
+      title: "Interior Design Engineer",
+      location: "Bengaluru, Karnataka",
+      duration: "Full-Time",
+      stipend: "Not Disclosed",
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants,and we are a funded startup. we're driving India's sustainable mobility revolution.",//"Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants, and we are a funded startup. we're driving India's sustainable mobility revolution.",
+      overview: "Lead the design, development, and integration of vehicle interior systems, ensuring functional, aesthetic, and safety compliance. Drive innovation in material selection and manufacturability while collaborating cross-functionally to deliver production-ready interiors for electric vehicles.",
+      responsibilities: [
+        "Interior System Design:",
+        "- Develop 3D CAD models (CATIA, Siemens NX) for door trims, headliners, pillars, carpets, and HVAC ducts, ensuring ±1mm tolerances for fitment.",
+        "- Design DFM/DFA-optimized components using plastics, composites, and fabrics (e.g., recycled PET, vegan leather).",
+        "- Integrate airbags, HVAC systems, and electrical subsystems (infotainment, lighting) into interior layouts.",
+        "Cross-Functional Collaboration:",
+        "- Partner with electrical teams to route wiring harnesses through trim components without compromising aesthetics.",
+        "- Validate thermal/acoustic insulation performance (≤40 dB cabin noise) and airflow efficiency (≥90% HVAC duct efficacy).",
+        "- Conduct packaging studies to optimize space for ADAS sensors and battery enclosures.",
+        "Prototyping & Validation:",
+        "- Build physical prototypes for critical components (e.g., injection-molded door panels) and validate via FEA (structural integrity) and DFMEA (failure mode analysis).",
+        "- Execute durability testing (ISO 16750-3) for trim components under Indian conditions (humidity, dust, 20G vibrations).",
+        "Compliance & Documentation:",
+        "- Ensure designs meet AIS-098 (crash safety) and FMVSS 201 (interior impact) standards.",
+        "- Maintain BOMs, GD&T drawings, and validation reports for homologation.",
+        "Supplier & Cost Optimization:",
+        "- Source BIS-certified materials (IS 14618 for plastics) and negotiate with suppliers for 15% cost reduction.",
+        "- Implement tooling feasibility reviews for injection molding and thermoforming processes."
+      ],
+      requirements: [
+        "Education:",
+        "- Required: B.E./B.Tech or M.E./M.Tech in Mechanical/Automotive Engineering.",
+        "Technical Skills:",
+        "- Expertise in CATIA V5/V6 or Siemens NX for surface and solid modeling.",
+        "- Proficiency in material selection (thermoplastics, composites) and manufacturing processes (injection molding, compression molding).",
+        "- Knowledge of automotive standards (AIS-098, FMVSS 201) and validation protocols (DVP, DFMEA).",
+        "Experience:",
+        "- 3-7 years in automotive interior design (OEM/Tier 1), with a portfolio showcasing ≥1 production component (e.g., headliner, door trim).",
+        "- Experience with cross-functional teams (electrical, safety) and rapid prototyping (3D printing, CNC machining).",
+        "Certifications:",
+        "- CATIA Certified Professional (preferred).",
+        "- Six Sigma Green Belt (for DFM/DFA optimization)."
+      ],
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+    },
+    {
+      title: "HVAC Design Engineer",
+      location: "Bengaluru, Karnataka",
+      duration: "Full-Time",
+      stipend: "Not Disclosed",
+      about: "Join LCM, a pioneering EV tech startup founded by IIT Kharagpur alumni, dedicated to extending electric vehicle range through modular charging innovations. Backed by top incubators like Wadhwani Foundation, Atal Incubation Center, and IIMB NSRCEL, and funded by equity-free grants,and we are a funded startup. we're driving India's sustainable mobility revolution.",
+      overview: "Lead the design, development, and validation of HVAC systems for the LCM's EV prototype. Ensure thermal comfort, energy efficiency, and seamless integration of cabin climate control and battery thermal management systems under diverse operating conditions.",
+      responsibilities: [
+        "HVAC System Design:",
+        "- Design heat pump-based HVAC systems for cabin cooling/heating and battery thermal management, achieving ±1.5°C temperature uniformity.",
+        "- Optimize refrigerant circuits (R1234yf/R744) for energy efficiency, ensuring compliance with SAE J2766, AIS-153, and ECE R742.",
+        "- Develop air filtration systems with HEPA/activated carbon filters for cabin air quality (PM2.5 removal ≥95%).",
+        "Simulation & Analysis:",
+        "- Conduct CFD simulations (ANSYS Fluent/Star-CCM+) for airflow distribution, defrosting performance, and condenser/evaporator efficiency.",
+        "- Perform FEA on HVAC assemblies (vibration, structural integrity) and validate against ISO 16750-3 (mechanical loads).",
+        "- Collaborate with aerodynamics teams to minimize drag from HVAC intake/exhaust systems.",
+        "Prototyping & Validation:",
+        "- Build and test HVAC prototypes in environmental chambers (-30°C to +55°C) for performance under extreme conditions.",
+        "- Execute HALT/HASS testing on blowers, compressors, and PTC heaters to validate 10-year durability.",
+        "- Lead NVH optimization to reduce HVAC noise to ≤40 dB(A) at full load.",
+        "Cost & Energy Optimization:",
+        "- Reduce HVAC energy consumption by ≥25% via predictive thermal load management and variable-speed compressors.",
+        "- Lower system mass by 15% using aluminum/magnesium housings and compact heat exchangers.",
+        "- Collaborate with suppliers to source cost-effective components (e.g., TX valves, sensors) meeting IATF 16949 standards."
+      ],
+      requirements: [
+        "Education:",
+        "- Required: B.E./B.Tech or M.E./M.Tech in Mechanical Engineering/Automotive Engineering.",
+        "Technical Skills:",
+        "- Expertise in HVAC simulation tools (ANSYS, Star-CCM+, Kuli).",
+        "- Proficiency in refrigerant circuit design and psychrometric analysis.",
+        "- Knowledge of automotive HVAC standards (SAE J639, ISO 19453) and thermal materials (phase-change, aerogels).",
+        "Experience:",
+        "- 3-7 years in automotive HVAC design (OEM/Tier 1), preferably in EVs/hybrids.",
+        "- Portfolio demonstrating ≥1 production-ready HVAC system (cabin/battery thermal management).",
+        "- Startup or rapid prototyping experience (agile testing, iterative design).",
+        "Certifications:",
+        "- SAE Thermal Management Professional (preferred).",
+        "- ASHRAE Certified HVAC Designer (optional).",
+        "- Six Sigma Green Belt (reliability testing)."
+      ],
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+    },    
+       
     
   ];
 
@@ -624,22 +646,7 @@ const Careers: React.FC = () => {
                           ))}
                         </ul>
                       </div>
-                      <div>
-                        <h4 className="font-medium text-white mb-2">KPIs</h4>
-                        <ul className="list-disc list-inside text-white/70 space-y-1">
-                          {position.kpis.map((kpi, i) => (
-                            <li key={i}>{kpi}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-white mb-2">Perks</h4>
-                        <ul className="list-disc list-inside text-white/70 space-y-1">
-                          {position.perks.map((perk, i) => (
-                            <li key={i}>{perk}</li>
-                          ))}
-                        </ul>
-                      </div>
+                      
                       <div className="flex flex-col sm:flex-row gap-4 mt-6">
                         <a
                           href={position.formLink}
