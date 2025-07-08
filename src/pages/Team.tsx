@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 // Import team images
 import WesImage from '../assets/Wes.webp';
 import JayImage from '../assets/Jay.webp';
-import AniImage from '../assets/Ani.webp'; // Assuming this is Anil Kumar based on usage below
+import AniImage from '../assets/Ani.webp';
 import NavImage from '../assets/Nav.webp';
 import DurImage from '../assets/Dur.webp';
 import CheImage from '../assets/che.webp';
+import TanImage from '../assets/tanmay.webp';
 
-// --- TypeScript interface for strong typing ---
 interface TeamMember {
   name: string;
   role: string;
@@ -86,6 +86,16 @@ const coreTeam: TeamMember[] = [
       linkedin: "https://www.linkedin.com/in/chethan-ashray-1351b0329",
       email: "chethanashray16@gmail.com"
     }
+  },
+  {
+    name: "Tanmay Arora",
+    role: "Fractional COO & Strategic Advisor",
+    background: "4x CEO, award-winning business consultant & TedX speaker, bringing global leadership and strategic depth to LCM.",
+    image: TanImage,
+    social: {
+      linkedin: "https://www.linkedin.com/in/tanmayaroraaa",
+      email: "kreserasera@gmail.com"
+    }
   }
 ];
 
@@ -102,8 +112,8 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: {
       duration: 0.3
@@ -112,7 +122,7 @@ const itemVariants = {
 };
 
 const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
-  <motion.div 
+  <motion.div
     variants={itemVariants}
     className="bg-dark-800 rounded-2xl overflow-hidden border border-white/10 hover:border-primary-500/30 transition-all duration-300 group shadow-lg flex flex-col"
     style={{
@@ -131,10 +141,10 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
         flexShrink: 0
       }}
     >
-      <img 
-        src={member.image} 
+      <img
+        src={member.image}
         alt={member.name}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
@@ -146,7 +156,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
       </div>
       <div className="flex space-x-4 mt-auto">
         {member.social.linkedin && (
-          <a 
+          <a
             href={member.social.linkedin}
             className="text-white/60 hover:text-primary-500 transition-colors"
             aria-label={`${member.name}'s LinkedIn profile`}
@@ -156,7 +166,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
           </a>
         )}
         {member.social.email && (
-          <a 
+          <a
             href={`mailto:${member.social.email}`}
             className="text-white/60 hover:text-primary-500 transition-colors"
             aria-label={`Email ${member.name}`}
@@ -174,16 +184,16 @@ const Team: React.FC = () => (
     {/* Hero Section */}
     <section className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0">
-        <img 
+        <img
           src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg"
           alt="LCM Lab"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-dark-900/80 backdrop-blur-sm" />
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
+        <motion.div
           className="max-w-3xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -202,7 +212,7 @@ const Team: React.FC = () => (
     {/* Core Team Section */}
     <section className="py-20">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -217,7 +227,7 @@ const Team: React.FC = () => (
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16 justify-items-center"
           style={{ justifyItems: "center" }}
           variants={containerVariants}
@@ -234,7 +244,7 @@ const Team: React.FC = () => (
     {/* CTA Section */}
     <section className="py-20 bg-gradient-to-b from-dark-800 to-dark-900">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="bg-gradient-to-br from-primary-500/20 via-dark-800 to-secondary-500/20 rounded-2xl p-8 md:p-12 border border-white/10 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -247,7 +257,7 @@ const Team: React.FC = () => (
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
             Join our team of innovators and help revolutionize how electric vehicles charge.
           </p>
-          <Link 
+          <Link
             to="/careers"
             className="inline-block bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-full font-medium transition-colors"
           >

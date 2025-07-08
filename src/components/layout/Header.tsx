@@ -54,31 +54,32 @@ const Header: React.FC = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${bgClass}`}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
           <Link 
             to="/" 
             className="flex items-center pointer-events-auto"
             onClick={closeMobileMenu}
           >
-            <div className="relative h-[70px] w-auto transition-all duration-300 md:h-[70px] lg:h-[70px]">
+            <div className="relative h-[80px] w-auto transition-all duration-300 md:h-[80px]">
               <img 
                 src={logo} 
                 alt="LCM Logo" 
                 className="h-full w-auto object-contain transition-transform duration-300 hover:scale-105"
-                style={{ maxWidth: '180px' }}
+                style={{ maxWidth: '200px' }} // Enlarged
                 draggable="false"
               />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               link.isSection ? (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                  className="text-base font-medium text-white/70 hover:text-white transition-colors px-2 py-1"
                   onClick={(e) => handleNavigation(link.href, e, location, navigate)}
                 >
                   {link.name}
@@ -87,7 +88,7 @@ const Header: React.FC = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                  className="text-base font-medium text-white/70 hover:text-white transition-colors px-2 py-1"
                 >
                   {link.name}
                 </Link>
@@ -96,7 +97,7 @@ const Header: React.FC = () => {
             <Link
               to="/#contact"
               onClick={(e) => handleNavigation('/#contact', e, location, navigate)}
-              className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-full text-sm font-medium transition-colors"
+              className="px-5 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-full text-base font-medium transition-colors"
             >
               Contact Us
             </Link>
@@ -109,7 +110,7 @@ const Header: React.FC = () => {
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </div>

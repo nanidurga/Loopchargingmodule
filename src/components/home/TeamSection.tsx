@@ -1,20 +1,20 @@
-import React from 'react';
-import { Linkedin, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Users, Rocket, Mail, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import AniImage from '../../assets/Ani.webp';
-import DurImage from '../../assets/Dur.webp';
-import JayImage from '../../assets/Jay.webp';
-import NavImage from '../../assets/Nav.webp';
+
+// Import team images
 import WesImage from '../../assets/Wes.webp';
+import JayImage from '../../assets/Jay.webp';
+import AniImage from '../../assets/Ani.webp';
+import NavImage from '../../assets/Nav.webp';
+import DurImage from '../../assets/Dur.webp';
 import CheImage from '../../assets/che.webp';
+import TanImage from '../../assets/tanmay.webp';
 
-// Placeholder images; replace with your own imports if needed
-
-
-interface TeamMemberProps {
+interface TeamMember {
   name: string;
   role: string;
-  bio: string;
+  background: string; // Changed from 'bio' to 'background' for consistency
   image: string;
   social: {
     linkedin?: string;
@@ -24,73 +24,13 @@ interface TeamMemberProps {
 
 const CARD_WIDTH = 400;
 const CARD_HEIGHT = 600;
-const IMAGE_HEIGHT = 340;
+const IMAGE_HEIGHT = 320; // Adjusted back to 320 for consistency with the first example
 
-const TeamMember: React.FC<TeamMemberProps> = React.memo(({ name, role, bio, image, social }) => {
-  return (
-    <div
-      className="bg-dark-800 rounded-2xl overflow-hidden border border-white/10 hover:border-primary-500/30 transition-all duration-300 group shadow-lg flex flex-col"
-      style={{
-        minHeight: CARD_HEIGHT,
-        maxWidth: CARD_WIDTH,
-        width: CARD_WIDTH,
-        margin: "0 auto",
-      }}
-    >
-      <div
-        className="w-full"
-        style={{
-          height: IMAGE_HEIGHT,
-          position: "relative",
-          overflow: "hidden",
-          flexShrink: 0,
-        }}
-      >
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
-      </div>
-      <div className="flex flex-col flex-grow justify-between p-8">
-        <div>
-          <h3 className="font-display font-semibold text-2xl text-white mb-1">{name}</h3>
-          <p className="text-primary-400 mb-2 text-lg">{role}</p>
-          <p className="text-white/70 mb-4 text-base">{bio}</p>
-        </div>
-        <div className="flex space-x-4 mt-auto">
-          {social.linkedin && (
-            <a
-              href={social.linkedin}
-              className="text-white/60 hover:text-primary-500 transition-colors"
-              aria-label={`${name}'s LinkedIn profile`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin size={22} />
-            </a>
-          )}
-          {social.email && (
-            <a
-              href={`mailto:${social.email}`}
-              className="text-white/60 hover:text-primary-500 transition-colors"
-              aria-label={`Email ${name}`}
-            >
-              <Mail size={22} />
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-});
-
-const teamMembers: TeamMemberProps[] = [
+const coreTeam: TeamMember[] = [
   {
     name: "Wesly Jambarapu",
     role: "CEO & Founder",
-    bio: "As CEO of LCM, I pioneer breakthrough solution of LCM that enable electric vehicles to charge while in motion",
+    background: "As CEO of LCM, I pioneer breakthrough solution of LCM that enable electric vehicles to charge while in motion",
     image: WesImage,
     social: {
       linkedin: "https://www.linkedin.com/in/wesly-j/",
@@ -100,7 +40,7 @@ const teamMembers: TeamMemberProps[] = [
   {
     name: "Jayshri Bej",
     role: "Co-Founder & CRO",
-    bio: "As CRO of LCM, I steer project management, ensuring our solutions meet real-world needs and scale effectively",
+    background: "As CRO of LCM, I steer project management, ensuring our solutions meet real-world needs and scale effectively",
     image: JayImage,
     social: {
       linkedin: "https://www.linkedin.com/in/jayshri-bej/",
@@ -110,7 +50,7 @@ const teamMembers: TeamMemberProps[] = [
   {
     name: "Anil Kumar",
     role: "Co-Founder & CPO",
-    bio: "As CPO, I bridge technology and business to create products that redefine industry standards.",
+    background: "As CPO, I bridge technology and business to create products that redefine industry standards.",
     image: AniImage,
     social: {
       linkedin: "https://www.linkedin.com/in/anilkumar-pidamarthi/",
@@ -120,7 +60,7 @@ const teamMembers: TeamMemberProps[] = [
   {
     name: "Naveen Islavath",
     role: "Co-Founder & CFO",
-    bio: "As CFO, I manage financial operations and drive strategic partnerships to fuel LCM's growth.",
+    background: "As CFO, I manage financial operations and drive strategic partnerships to fuel LCM's growth.",
     image: NavImage,
     social: {
       linkedin: "https://www.linkedin.com/in/naveen-islavath-b992021ba",
@@ -130,7 +70,7 @@ const teamMembers: TeamMemberProps[] = [
   {
     name: "Durga Prasad",
     role: "CTO",
-    bio: "As CTO, I architect and drive the core technology powering LCM's breakthrough EV charging solutions.",
+    background: "As CTO, I architect and drive the core technology powering LCM's breakthrough EV charging solutions.",
     image: DurImage,
     social: {
       linkedin: "https://www.linkedin.com/in/durga-prasad-nuthalapati-646b73233/",
@@ -140,61 +80,199 @@ const teamMembers: TeamMemberProps[] = [
   {
     name: "Chethan Ashray C",
     role: "COO",
-    bio: "As COO, I streamline operations at LCM to ensure seamless delivery of innovative EV charging solutions.",
+    background: "As COO, I streamline operations at LCM to ensure seamless delivery of innovative EV charging solutions.",
     image: CheImage,
     social: {
       linkedin: "https://www.linkedin.com/in/chethan-ashray-1351b0329",
       email: "chethanashray16@gmail.com"
     }
+  },
+  {
+    name: "Tanmay Arora",
+    role: "Fractional COO & Strategic Advisor",
+    background: "4x CEO, award-winning business consultant & TedX speaker, bringing global leadership and strategic depth to LCM.",
+    image: TanImage,
+    social: {
+      linkedin: "https://www.linkedin.com/in/tanmayaroraaa",
+      email: "kreserasera@gmail.com"
+    }
   }
 ];
 
-const TeamSection: React.FC = () => {
-  return (
-    <section id="team" className="py-20 bg-gradient-to-b from-dark-800 to-dark-900">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
-            Meet Our Team
-          </h2>
-          <p className="text-white/70 text-lg">
-            LCM is founded by engineers and innovators from IITs and EV-focused startups, bringing together decades of experience in automotive and energy technologies.
-          </p>
-        </div>
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
 
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 justify-items-center"
-          style={{ justifyItems: "center" }}
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3
+    }
+  }
+};
+
+const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
+  <motion.div
+    variants={itemVariants}
+    className="bg-dark-800 rounded-2xl overflow-hidden border border-white/10 hover:border-primary-500/30 transition-all duration-300 group shadow-lg flex flex-col"
+    style={{
+      minHeight: CARD_HEIGHT,
+      maxWidth: CARD_WIDTH,
+      width: CARD_WIDTH,
+      margin: "0 auto"
+    }}
+  >
+    <div
+      className="w-full"
+      style={{
+        height: IMAGE_HEIGHT,
+        position: "relative",
+        overflow: "hidden",
+        flexShrink: 0
+      }}
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    </div>
+    <div className="flex flex-col flex-grow justify-between p-8">
+      <div>
+        <h3 className="font-display font-semibold text-2xl text-white mb-1">{member.name}</h3>
+        <p className="text-primary-400 mb-2 text-lg">{member.role}</p>
+        <p className="text-white/70 text-base mb-4">{member.background}</p>
+      </div>
+      <div className="flex space-x-4 mt-auto">
+        {member.social.linkedin && (
+          <a
+            href={member.social.linkedin}
+            className="text-white/60 hover:text-primary-500 transition-colors"
+            aria-label={`${member.name}'s LinkedIn profile`}
+            target="_blank" rel="noopener noreferrer"
+          >
+            <Linkedin size={22} />
+          </a>
+        )}
+        {member.social.email && (
+          <a
+            href={`mailto:${member.social.email}`}
+            className="text-white/60 hover:text-primary-500 transition-colors"
+            aria-label={`Email ${member.name}`}
+          >
+            <Mail size={22} />
+          </a>
+        )}
+      </div>
+    </div>
+  </motion.div>
+);
+
+const TeamSection: React.FC = () => ( // Changed component name to TeamSection as per the original second block
+  <div className="min-h-screen bg-dark-900">
+    {/* Hero Section */}
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg"
+          alt="LCM Lab"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-dark-900/80 backdrop-blur-sm" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          className="max-w-3xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          {teamMembers.map((member, index) => (
-            <TeamMember
-              key={index}
-              name={member.name}
-              role={member.role}
-              bio={member.bio}
-              image={member.image}
-              social={member.social}
-            />
-          ))}
-        </div>
+          <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+            Meet the Team Behind the Future of EV Charging
+          </h1>
+          <p className="text-white/80 text-lg md:text-xl mb-8">
+            Engineers. Visionaries. Builders. We're creating a world where EVs charge while driving.
+          </p>
+        </motion.div>
+      </div>
+    </section>
 
-        <div className="bg-dark-800 rounded-xl p-8 border border-white/10 text-center">
-          <h3 className="font-display font-semibold text-xl text-white mb-4">
-            Join Our Growing Team
-          </h3>
-          <p className="text-white/70 mb-6 max-w-2xl mx-auto">
-            We're always looking for talented individuals passionate about revolutionizing electric vehicle technology. Check out our open positions and become part of the future of EV charging.
+    {/* Core Team Section */}
+    <section className="py-20">
+      <div className="container mx-auto px-4">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Users className="h-12 w-12 text-primary-500 mx-auto mb-4" />
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
+            Core Team
+          </h2>
+          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+            Our team brings together expertise from leading automotive companies, research institutions, and technology innovators.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16 justify-items-center"
+          style={{ justifyItems: "center" }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {coreTeam.map((member, index) => (
+            <TeamMemberCard key={index} member={member} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+
+    {/* CTA Section */}
+    <section className="py-20 bg-gradient-to-b from-dark-800 to-dark-900">
+      <div className="container mx-auto px-4">
+        <motion.div
+          className="bg-gradient-to-br from-primary-500/20 via-dark-800 to-secondary-500/20 rounded-2xl p-8 md:p-12 border border-white/10 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <Rocket className="h-12 w-12 text-primary-500 mx-auto mb-6" />
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
+            Want to build the future of EVs with us?
+          </h2>
+          <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
+            Join our team of innovators and help revolutionize how electric vehicles charge.
           </p>
           <Link
             to="/careers"
-            className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full font-medium transition-colors inline-block"
+            className="inline-block bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-full font-medium transition-colors"
           >
-            View Career Opportunities
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block"
+            >
+              Join the Team
+            </motion.span>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
-  );
-};
+  </div>
+);
 
 export default TeamSection;
