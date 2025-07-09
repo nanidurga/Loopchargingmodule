@@ -94,7 +94,7 @@ const coreTeam: TeamMember[] = [
     image: TanImage,
     social: {
       linkedin: "https://www.linkedin.com/in/tanmayaroraaa",
-      email: "kreserasera@gmail.com"
+      email: "tanmayaroramba@gmail.com"
     }
   }
 ];
