@@ -1,190 +1,103 @@
-import React, { useState, useCallback, memo } from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Wind, Cog, Gauge, Zap } from 'lucide-react';
 
-// Instead, define image paths:
-const propellerImage = '/assets/propeller2.webp';
-const torqueConverterImage = '/assets/torque.webp';
-const gearSetImage = '/assets/Gearset.webp';
-const generatorImage = '/assets/Generator.webp';
-const defaultEvCarImage = '/assets/L2.webp';
+const components = [
+  {
+    title: 'Propeller',
+    icon: <Wind className="w-7 h-7 text-primary-400" />,
+    image: '/assets/propeller2.webp',
+    description: 'Captures ambient airflow as your vehicle moves, designed for minimal drag and maximum energy capture at speeds ≥30 km/h.',
+  },
+  {
+    title: 'Torque Converter',
+    icon: <Cog className="w-7 h-7 text-primary-400" />,
+    image: '/assets/torque.webp',
+    description: "Transforms the propeller's rotation into smooth, consistent mechanical energy, ensuring stable operation during speed variations.",
+  },
+  {
+    title: 'Gear Set',
+    icon: <Gauge className="w-7 h-7 text-primary-400" />,
+    image: '/assets/Gearset.webp',
+    description: 'Optimizes the rotational speed and torque from the converter to maximize efficiency across different driving conditions.',
+  },
+  {
+    title: 'Magnetic Induction Generator',
+    icon: <Zap className="w-7 h-7 text-primary-400" />,
+    image: '/assets/Generator.webp',
+    description: "Converts the mechanical energy into electricity, directly feeding your EV's battery with a continuous charge while driving.",
+  },
+];
 
-// Simple image display component
-const TechImageDisplay = memo(({ 
-  imageSrc, 
-  altText 
-}: { 
-  imageSrc: string; 
-  altText: string; 
-}) => {
-  return (
-    <div className="w-full h-72 bg-dark-700/50 rounded-xl border border-white/10 flex items-center justify-center p-0 relative mb-8 overflow-hidden">
-      <img
-        src={imageSrc}
-        alt={altText}
-        className="absolute inset-0 w-full h-full object-cover rounded-lg"
-        loading="eager"
-        draggable={false}
-      />
-    </div>
-  );
-});
+const finalImage = '/assets/L2.webp';
 
-// Simple icon component
-const TechIcon = memo(({
-  icon,
-  label,
-  isActive,
-  componentId,
-  onHover,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  isActive: boolean;
-  componentId: string;
-  onHover: (id: string | null) => void;
-}) => {
-  const handleMouseEnter = useCallback(() => {
-    onHover(componentId);
-  }, [componentId, onHover]);
-
-  const handleMouseLeave = useCallback(() => {
-    onHover(null);
-  }, [onHover]);
+const TechnologySection = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
 
   return (
-    <div className="flex flex-col items-center select-none">
-      <div
-        className={`w-16 h-16 rounded-full flex items-center justify-center cursor-pointer
-          ${isActive 
-            ? 'bg-primary-500 text-white' 
-            : 'bg-dark-700 text-primary-400 hover:bg-dark-600'
-          }`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        tabIndex={0}
-        aria-label={label}
-        role="button"
-      >
-        {icon}
-      </div>
-      <p className="mt-2 text-white font-medium text-center pointer-events-none">{label}</p>
-    </div>
-  );
-});
-
-const TechnologySection: React.FC = () => {
-  const [hoveredComponentId, setHoveredComponentId] = useState<string | null>(null);
-
-  const components = [
-    {
-      id: 'propeller',
-      title: 'Propeller',
-      description: 'Captures ambient airflow as your vehicle moves, designed for minimal drag and maximum energy capture at speeds ≥30 km/h.',
-      icon: <Wind className="h-8 w-8" />,
-      image: propellerImage,
-    },
-    {
-      id: 'torque-converter',
-      title: 'Torque Converter',
-      description: "Transforms the propeller's rotation into smooth, consistent mechanical energy, ensuring stable operation during speed variations.",
-      icon: <Cog className="h-8 w-8" />,
-      image: torqueConverterImage,
-    },
-    {
-      id: 'gear-set',
-      title: 'Gear Set',
-      description: 'Optimizes the rotational speed and torque from the converter to maximize efficiency across different driving conditions.',
-      icon: <Gauge className="h-8 w-8" />,
-      image: gearSetImage,
-    },
-    {
-      id: 'generator',
-      title: 'Magnetic Induction Generator',
-      description: "Converts the mechanical energy into electricity, directly feeding your EV's battery with a continuous charge while driving.",
-      icon: <Zap className="h-8 w-8" />,
-      image: generatorImage,
-    },
-  ];
-
-  const handleHover = useCallback((id: string | null) => {
-    setHoveredComponentId(id);
-  }, []);
-
-  const activeComponent = components.find(c => c.id === hoveredComponentId);
-  const imageSrc = activeComponent ? activeComponent.image : defaultEvCarImage;
-  const altText = activeComponent ? activeComponent.title : 'EV Car';
-
-  return (
-    <section id="technology" className="py-20 bg-gradient-to-b from-dark-800 to-dark-900">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
-            How LCM Technology Works
-          </h2>
-          <p className="text-white/70 text-lg">
-            Our breakthrough system converts ambient airflow into usable electricity through a seamless four-stage process, all without creating additional drag.
+    <section ref={sectionRef} className="py-32 bg-gradient-to-b from-dark-800 to-dark-900 text-white overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-24"
+        >
+          <h2 className="text-4xl font-bold mb-4">How LCM Technology Works</h2>
+          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+            A seamless four-stage process converts ambient airflow into usable electricity — powering your EV without additional drag.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Image */}
-          <div className="bg-dark-800 border border-white/10 rounded-2xl p-6 lg:p-8 shadow-lg">
-            <TechImageDisplay imageSrc={imageSrc} altText={altText} />
-            <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-2">
-              {components.map((component, index) => (
-                <React.Fragment key={component.id}>
-                  <TechIcon
-                    icon={component.icon}
-                    label={component.title}
-                    isActive={hoveredComponentId === component.id}
-                    componentId={component.id}
-                    onHover={handleHover}
-                  />
-                  {index < components.length - 1 && (
-                    <div className="h-8 md:h-0 md:w-8 flex-grow mx-2 my-2 md:my-0 flex items-center justify-center pointer-events-none">
-                      <div className="w-0.5 h-full md:w-full md:h-0.5 bg-white/30 relative">
-                        <div className="absolute top-1/2 right-0 md:top-0 md:right-1/2 transform -translate-y-1/2 md:-translate-x-1/2 md:translate-y-0 h-2 w-2 bg-white/50 rounded-full"></div>
-                      </div>
-                    </div>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
+        {components.map((comp, index) => {
+          const delay = index * 0.2;
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay }}
+              viewport={{ once: true }}
+              className="flex flex-col md:flex-row items-center gap-10 mb-24"
+            >
+              <img
+                src={comp.image}
+                alt={comp.title}
+                className="md:w-1/2 w-full h-[300px] object-cover rounded-xl shadow-lg"
+              />
+              <div className="md:w-1/2 w-full space-y-4">
+                <div className="flex items-center gap-3">
+                  {comp.icon}
+                  <h3 className="text-2xl font-semibold">{comp.title}</h3>
+                </div>
+                <p className="text-white/70 leading-relaxed text-base">{comp.description}</p>
+              </div>
+            </motion.div>
+          );
+        })}
 
-          {/* Right Side - Description */}
-          <div>
-            <div className="bg-dark-800 border border-white/10 rounded-2xl p-6 lg:p-8 shadow-lg mb-8">
-              <h3 className="font-display font-semibold text-2xl text-white mb-4">
-                {activeComponent ? activeComponent.title : "Select a component"}
-              </h3>
-              <p className="text-white/70 mb-6">
-                {activeComponent
-                  ? activeComponent.description
-                  : "Hover over each component's icon in the diagram to learn more about how our system works."}
-              </p>
-              {!activeComponent && (
-                <ul className="space-y-4">
-                  {components.map((component) => (
-                    <li key={component.id} className="flex items-start">
-                      <div className="mr-3 mt-1 text-primary-400">{component.icon}</div>
-                      <div>
-                        <h4 className="font-medium text-white">{component.title}</h4>
-                        <p className="text-white/70 text-sm">{component.description}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <div className="bg-primary-500/10 border border-primary-500/20 rounded-xl p-5">
-              <h4 className="font-medium text-primary-300 mb-2">Key Advantage</h4>
-              <p className="text-white/80">
-                Unlike other charging methods, LCM works continuously while driving, even in urban stop-and-go traffic where regenerative braking is less effective.
-              </p>
-            </div>
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-20"
+        >
+          <h3 className="text-3xl font-bold mb-4">Final Integrated System</h3>
+          <p className="text-white/70 mb-6 max-w-xl mx-auto">
+            All components combined into a single seamless energy unit that charges your EV while driving.
+          </p>
+          <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <img
+              src={finalImage}
+              alt="Final EV Assembly"
+              className="w-full h-[400px] object-cover"
+              loading="lazy"
+            />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

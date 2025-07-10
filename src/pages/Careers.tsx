@@ -17,6 +17,7 @@ interface JobPosition {
   responsibilities: string[];
   requirements: string[];
   formLink: string;
+  roleType: 'intern' | 'fulltime'; // Added property
 }
 
 const Careers: React.FC = () => {
@@ -46,6 +47,7 @@ const Careers: React.FC = () => {
         "Pursuing/completed Bachelor's/Master's in Mechanical/Automotive Engineering",
       ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
+      roleType: 'intern',
     },
     {
       title: "BMS Design Intern",
@@ -71,6 +73,7 @@ const Careers: React.FC = () => {
         "Pursuing/completed Bachelor's/Master's in Electrical/Electronics/Embedded Systems",
       ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
+      roleType: 'intern',
     },
     {
       title: "EV Infrastructure Design Intern (Electronics & Circuit Design)",
@@ -95,6 +98,7 @@ const Careers: React.FC = () => {
         "Pursuing/completed Bachelor's/Master's in Electrical/Electronics/Automotive Engineering",
       ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
+      roleType: 'intern',
     },
     {
       title: "EV Infrastructure & Electrical Design Intern",
@@ -119,6 +123,7 @@ const Careers: React.FC = () => {
         "Pursuing/completed Bachelor's/Master's in Electrical/Automotive Engineering",
       ],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSe0DBBN6Jk3goTz__61O1NlM9SP9dkUQJM9hm4_UWDzO44h5A/viewform?usp=header",
+      roleType: 'intern',
     },
     {
       title: "Power Systems Engineer",
@@ -161,7 +166,8 @@ const Careers: React.FC = () => {
         "- IPC-9592B (Power Electronics Assembly Certification)"
       ],
       
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     },    
     {
       title: "Electrical Design & Integration Engineer",
@@ -208,7 +214,8 @@ const Careers: React.FC = () => {
         "- IPC/WHMA-A-620 (Harness Certification).",
         "- Autosar Classic/Adaptive foundational knowledge."
       ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     },
     {
       title: "Embedded Systems & Controls Engineer",
@@ -262,7 +269,8 @@ const Careers: React.FC = () => {
         "- AUTOSAR Certified Engineer.",
         "- IPC-A-610 (PCB Acceptability)."
       ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     },
     {
       title: "Mechanical Design & Integration Engineer",
@@ -308,7 +316,8 @@ const Careers: React.FC = () => {
         "- SolidWorks Certified Professional/Expert (Preferred).",
         "- Siemens NX CAD Associate/Professional (Optional)."
       ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     }, 
     {
       title: "Powertrain & Vehicle Dynamics Engineer",
@@ -352,7 +361,8 @@ const Careers: React.FC = () => {
         "- SAE Vehicle Dynamics Certification (preferred).",
         "- ASQ Reliability Engineer (optional)."
       ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     },  
     {
       title: "Thermal & Structural Systems Engineer",
@@ -393,7 +403,8 @@ const Careers: React.FC = () => {
         "- ASQ Certified Reliability Engineer (preferred).",
         "- AEF Thermal Management Specialist (optional)."
       ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     },
     {
       title: "Interior Design Engineer",
@@ -435,7 +446,8 @@ const Careers: React.FC = () => {
         "- CATIA Certified Professional (preferred).",
         "- Six Sigma Green Belt (for DFM/DFA optimization)."
       ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     },
     {
       title: "HVAC Design Engineer",
@@ -478,13 +490,19 @@ const Careers: React.FC = () => {
         "- ASHRAE Certified HVAC Designer (optional).",
         "- Six Sigma Green Belt (reliability testing)."
       ],
-      formLink: "https://forms.gle/cMgRVFLwnQZnbL568"
+      formLink: "https://forms.gle/cMgRVFLwnQZnbL568",
+      roleType: 'fulltime',
     },    
        
     
   ];
 
   const [selectedPositionTitle, setSelectedPositionTitle] = useState<string | null>(null);
+  const [roleFilter, setRoleFilter] = useState<'intern' | 'fulltime'>('intern'); // New state
+
+  const filteredPositions = positions.filter(
+    (position) => position.roleType === roleFilter
+  );
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -557,6 +575,21 @@ const Careers: React.FC = () => {
       {/* Open Positions Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
+          {/* Toggle for Internships/Full-Time */}
+          <div className="flex justify-center mb-12">
+            <button
+              className={`px-6 py-2 rounded-l-full font-medium border border-primary-500 focus:outline-none transition-colors duration-200 ${roleFilter === 'intern' ? 'bg-primary-500 text-white' : 'bg-dark-800 text-primary-500 hover:bg-primary-500/10'}`}
+              onClick={() => setRoleFilter('intern')}
+            >
+              Internships
+            </button>
+            <button
+              className={`px-6 py-2 rounded-r-full font-medium border-t border-b border-r border-primary-500 focus:outline-none transition-colors duration-200 ${roleFilter === 'fulltime' ? 'bg-primary-500 text-white' : 'bg-dark-800 text-primary-500 hover:bg-primary-500/10'}`}
+              onClick={() => setRoleFilter('fulltime')}
+            >
+              Full-Time
+            </button>
+          </div>
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -578,7 +611,7 @@ const Careers: React.FC = () => {
             initial="hidden"
             animate="visible"
           >
-            {positions.map((position) => (
+            {filteredPositions.map((position) => (
               <motion.div
                 key={position.title}
                 variants={itemVariants}

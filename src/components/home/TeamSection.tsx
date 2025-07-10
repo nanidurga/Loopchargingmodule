@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { Users, Rocket, Mail, Linkedin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Users, Mail, Linkedin } from 'lucide-react';
 
 // Import team images
 import WesImage from '../../assets/Wes.webp';
@@ -14,7 +13,7 @@ import TanImage from '../../assets/tanmay.webp';
 interface TeamMember {
   name: string;
   role: string;
-  background: string; // Changed from 'bio' to 'background' for consistency
+  background: string;
   image: string;
   social: {
     linkedin?: string;
@@ -24,7 +23,7 @@ interface TeamMember {
 
 const CARD_WIDTH = 400;
 const CARD_HEIGHT = 600;
-const IMAGE_HEIGHT = 320; // Adjusted back to 320 for consistency with the first example
+const IMAGE_HEIGHT = 320;
 
 const coreTeam: TeamMember[] = [
   {
@@ -179,37 +178,9 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
   </motion.div>
 );
 
-const TeamSection: React.FC = () => ( // Changed component name to TeamSection as per the original second block
+const TeamSection: React.FC = () => (
   <div className="min-h-screen bg-dark-900">
-    {/* Hero Section */}
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0">
-        <img
-          src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg"
-          alt="LCM Lab"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-dark-900/80 backdrop-blur-sm" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="max-w-3xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
-            Meet the Team Behind the Future of EV Charging
-          </h1>
-          <p className="text-white/80 text-lg md:text-xl mb-8">
-            Engineers. Visionaries. Builders. We're creating a world where EVs charge while driving.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-
-    {/* Core Team Section */}
+    {/* Core Team Section Only */}
     <section className="py-20">
       <div className="container mx-auto px-4">
         <motion.div
@@ -228,8 +199,7 @@ const TeamSection: React.FC = () => ( // Changed component name to TeamSection a
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16 justify-items-center"
-          style={{ justifyItems: "center" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -237,38 +207,6 @@ const TeamSection: React.FC = () => ( // Changed component name to TeamSection a
           {coreTeam.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
           ))}
-        </motion.div>
-      </div>
-    </section>
-
-    {/* CTA Section */}
-    <section className="py-20 bg-gradient-to-b from-dark-800 to-dark-900">
-      <div className="container mx-auto px-4">
-        <motion.div
-          className="bg-gradient-to-br from-primary-500/20 via-dark-800 to-secondary-500/20 rounded-2xl p-8 md:p-12 border border-white/10 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <Rocket className="h-12 w-12 text-primary-500 mx-auto mb-6" />
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
-            Want to build the future of EVs with us?
-          </h2>
-          <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-            Join our team of innovators and help revolutionize how electric vehicles charge.
-          </p>
-          <Link
-            to="/careers"
-            className="inline-block bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-full font-medium transition-colors"
-          >
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              Join the Team
-            </motion.span>
-          </Link>
         </motion.div>
       </div>
     </section>
