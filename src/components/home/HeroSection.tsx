@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowRight, PlugZap, UserPlus } from 'lucide-react';
-import L1Image from '../../assets/L1.webp';
 import { scrollToContact } from '../../utils/navigation'; // no scrollToSection used anymore
 
+// TypeScript declaration for model-viewer
+// (If you have a global types file, move this there)
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'model-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        src: string;
+        alt?: string;
+        'camera-controls'?: boolean;
+        'auto-rotate'?: boolean;
+        'shadow-intensity'?: string | number;
+        exposure?: string | number;
+        'environment-image'?: string;
+        ar?: boolean;
+        'ar-modes'?: string;
+        loading?: string;
+        'disable-zoom'?: boolean | string;
+        style?: React.CSSProperties;
+      };
+    }
+  }
+}
+
 const HeroSection: React.FC = () => {
+  useEffect(() => {
+    // Dynamically load model-viewer script if not already present
+    if (!document.querySelector('script[src*="model-viewer.min.js"]')) {
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = 'https://unpkg.com/@google/model-viewer@^3.4.0/dist/model-viewer.min.js';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }, []);
+
   const handleDemoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     scrollToContact('demo');
@@ -55,18 +88,33 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side Card - Entirely Clickable */}
-          <div className="relative cursor-pointer" onClick={handleCardClick}>
+          {/* Right Side Card - Not Clickable */}
+          <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-2xl blur-xl pointer-events-none"></div>
             <div className="relative bg-dark-800/80 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-xl animate-float hover:scale-[1.02] transition-transform duration-300">
-              <img
-                src={L1Image}
-                alt="LCM Technology Render"
-                className="w-full h-auto rounded-lg mb-4 pointer-events-none"
-                loading="eager"
-                draggable="false"
-              />
-              <div className="bg-dark-900/50 backdrop-blur-sm rounded-lg p-4 border border-white/10 pointer-events-none">
+              {/* 3D Model Viewer as static */}
+              <model-viewer
+                src="/assets/models/totalint.glb"
+                alt="LCM Technology 3D Model"
+                style={{ width: '100%', height: '340px', background: 'transparent', borderRadius: '12px' }}
+                camera-controls
+                auto-rotate
+                shadow-intensity="1"
+                exposure="1"
+                environment-image="neutral"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                loading="lazy"
+                disable-zoom={false}
+              ></model-viewer>
+              <div
+                className="bg-dark-900/50 backdrop-blur-sm rounded-lg p-4 border border-white/10 cursor-pointer"
+                onClick={handleCardClick}
+                tabIndex={0}
+                role="button"
+                aria-label="Learn more about the Loop Charging Module"
+                style={{ outline: 'none' }}
+              >
                 <h3 className="font-display font-semibold text-lg text-white mb-2">
                   Loop Charging Module
                 </h3>

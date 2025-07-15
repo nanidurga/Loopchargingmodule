@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { Wind, Cog, Gauge, Zap } from 'lucide-react';
+import '@google/model-viewer'; // Import model-viewer web component
 
 const components = [
   {
@@ -29,14 +30,16 @@ const components = [
   },
 ];
 
-const finalImage = '/assets/L2.webp';
-
 const TechnologySection = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
 
   return (
-    <section ref={sectionRef} className="py-32 bg-gradient-to-b from-dark-800 to-dark-900 text-white overflow-hidden">
+    <section
+      id="technology"
+      ref={sectionRef}
+      className="py-32 bg-gradient-to-b from-dark-800 to-dark-900 text-white overflow-hidden scroll-mt-[120px]"
+    >
       <div className="container mx-auto px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -89,12 +92,17 @@ const TechnologySection = () => {
           <p className="text-white/70 mb-6 max-w-xl mx-auto">
             All components combined into a single seamless energy unit that charges your EV while driving.
           </p>
-          <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-            <img
-              src={finalImage}
+          <div className="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+            {/* 3D Model Viewer */}
+            <model-viewer
+              src="/assets/models/lcmf.glb"  // Replace with actual model file name
               alt="Final EV Assembly"
-              className="w-full h-[400px] object-cover"
-              loading="lazy"
+              auto-rotate
+              camera-controls
+              shadow-intensity="1"
+              exposure="1"
+              ar
+              style={{ width: '100%', height: '400px' }}
             />
           </div>
         </motion.div>
