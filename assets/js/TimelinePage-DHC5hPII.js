@@ -1,0 +1,1 @@
+import{j as e}from"./framer-motion-5UJVrniw.js";import{e as t}from"./main-B-MpM2Qg.js";import"./react-vendor-CFxXJm7r.js";const r=()=>e.jsxs("div",{className:"pt-16 md:pt-20",children:[" ",e.jsx(t,{})]});export{r as default};
