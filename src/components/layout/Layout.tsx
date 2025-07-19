@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
-import PageTransition from './PageTransition';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -41,9 +40,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="flex flex-col min-h-screen bg-dark-900 text-white overflow-hidden">
       <Header />
       <main className="flex-grow mt-16">
-        <PageTransition>
           {children}
-        </PageTransition>
       </main>
       <motion.footer
         initial={{ y: 100 }}

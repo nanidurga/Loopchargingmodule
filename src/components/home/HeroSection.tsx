@@ -1,42 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ArrowRight, PlugZap, UserPlus } from 'lucide-react';
 import { scrollToContact } from '../../utils/navigation'; // no scrollToSection used anymore
 
-// TypeScript declaration for model-viewer
-// (If you have a global types file, move this there)
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'model-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        src: string;
-        alt?: string;
-        'camera-controls'?: boolean;
-        'auto-rotate'?: boolean;
-        'shadow-intensity'?: string | number;
-        exposure?: string | number;
-        'environment-image'?: string;
-        ar?: boolean;
-        'ar-modes'?: string;
-        loading?: string;
-        'disable-zoom'?: boolean | string;
-        style?: React.CSSProperties;
-      };
-    }
-  }
-}
-
 const HeroSection: React.FC = () => {
-  useEffect(() => {
-    // Dynamically load model-viewer script if not already present
-    if (!document.querySelector('script[src*="model-viewer.min.js"]')) {
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = 'https://unpkg.com/@google/model-viewer@^3.4.0/dist/model-viewer.min.js';
-      script.async = true;
-      document.head.appendChild(script);
-    }
-  }, []);
-
   const handleDemoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     scrollToContact('demo');

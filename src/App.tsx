@@ -1,6 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Outlet } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Layout from './components/layout/Layout';
 import HeroSection from './components/home/HeroSection';
 import TechnologySection from './components/home/TechnologySection';
@@ -11,7 +11,6 @@ import TimelineSection from './components/home/TimelineSection';
 import TeamSection from './components/home/TeamSection';
 import ContactSection from './components/home/ContactSection';
 import FAQSection from './components/home/FAQSection';
-import PageTransition from './components/layout/PageTransition';
 
 // Lazy load page components
 const TeamPage = lazy(() => import('./pages/Team'));
@@ -19,19 +18,22 @@ const CareersPage = lazy(() => import('./pages/Careers'));
 const FAQPage = lazy(() => import('./pages/FAQ'));
 const TimelinePage = lazy(() => import('./pages/TimelinePage'));
 
+interface UsrState {
+  scrollTo?: string;
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Access the custom state property 'usr'
-    const usrState = window.history.state?.usr as { scrollTo?: string; [key: string]: any } | undefined;
+    const usrState = window.history.state?.usr as UsrState | undefined;
     const scrollToId = usrState?.scrollTo;
 
     if (scrollToId && typeof scrollToId === 'string') {
       let attempts = 0;
-      const maxAttempts = 50; // Approx 800ms (50 * 16ms)
-      const headerOffset = 80; // As per original code
+      const maxAttempts = 50;
+      const headerOffset = 80;
 
       const tryScroll = () => {
         const element = document.getElementById(scrollToId);
@@ -44,9 +46,7 @@ function ScrollToTop() {
             behavior: 'smooth',
           });
 
-          // Clear the scrollTo from state, preserving other usr properties
           const newUsrState = { ...usrState, scrollTo: undefined };
-          // Preserve other potential top-level state properties alongside 'usr'
           const newState = { ...window.history.state, usr: newUsrState };
           navigate(pathname, { replace: true, state: newState });
 
@@ -55,11 +55,8 @@ function ScrollToTop() {
           if (attempts < maxAttempts) {
             requestAnimationFrame(tryScroll);
           } else {
-            // Optional: Log if element not found
             console.warn(`ScrollToTop: Element with id '${scrollToId}' not found after ${maxAttempts} attempts. Scrolling to top.`);
-            // Fallback to scrolling to the top of the page
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Clear the scrollTo from state, preserving other usr properties
             const newUsrStateOnFallback = { ...usrState, scrollTo: undefined };
             const newStateOnFallback = { ...window.history.state, usr: newUsrStateOnFallback };
             navigate(pathname, { replace: true, state: newStateOnFallback });
@@ -67,25 +64,34 @@ function ScrollToTop() {
         }
       };
 
-      // Start the attempt to scroll
       requestAnimationFrame(tryScroll);
 
     } else {
-      // If no scrollToId, just scroll to the top of the page
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
     }
-  }, [pathname, navigate]); // Dependencies remain the same
+  }, [pathname, navigate]);
 
   return null;
 }
 
-function HomePage() {
-  return (
+const AppLayout = () => (
     <Layout>
-      <PageTransition>
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+        >
+            <Outlet />
+        </motion.div>
+    </Layout>
+);
+
+const HomeContent = () => (
+    <>
         <HeroSection />
         <TechnologySection />
         <BenefitsSection />
@@ -95,10 +101,8 @@ function HomePage() {
         <TeamSection />
         <FAQSection />
         <ContactSection />
-      </PageTransition>
-    </Layout>
-  );
-}
+    </>
+);
 
 function AppRoutes() {
   const location = useLocation();
@@ -106,47 +110,13 @@ function AppRoutes() {
   return (
     <Suspense fallback={<div className="fixed inset-0 bg-dark-900 flex items-center justify-center text-white">Loading page...</div>}>
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HomePage />} />
-        <Route 
-          path="/team" 
-          element={
-            <Layout>
-              <PageTransition>
-                <TeamPage />
-              </PageTransition>
-            </Layout>
-          } 
-        />
-        <Route 
-          path="/careers" 
-          element={
-            <Layout>
-              <PageTransition>
-                <CareersPage />
-              </PageTransition>
-            </Layout>
-          } 
-        />
-        <Route 
-          path="/faq" 
-          element={
-            <Layout>
-              <PageTransition>
-                <FAQPage />
-              </PageTransition>
-            </Layout>
-          } 
-        />
-        <Route 
-          path="/timeline" 
-          element={
-            <Layout>
-              <PageTransition>
-                <TimelinePage />
-              </PageTransition>
-            </Layout>
-          } 
-        />
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<HomeContent />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
+        </Route>
       </Routes>
     </Suspense>
   );

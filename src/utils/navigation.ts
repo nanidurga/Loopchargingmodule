@@ -1,3 +1,5 @@
+import { Location, NavigateFunction } from 'react-router-dom';
+
 export const scrollToSection = (sectionId: string, offset: number = 80): void => {
   const element = document.getElementById(sectionId);
   if (element) {
@@ -11,7 +13,7 @@ export const scrollToSection = (sectionId: string, offset: number = 80): void =>
 };
 
 // For BrowserRouter: only intercept /#section links for scrolling
-export const handleNavigation = (href: string, e: React.MouseEvent, location?: any, navigate?: any): void => {
+export const handleNavigation = (href: string, e: React.MouseEvent, location?: Location, navigate?: NavigateFunction): void => {
   if (href.startsWith('/#')) {
     e.preventDefault();
     const sectionId = href.split('#')[1];
@@ -35,4 +37,4 @@ export const scrollToContact = (inquiryType?: string): void => {
       selectElement.dispatchEvent(new Event('change', { bubbles: true }));
     }
   }
-}; 
+};

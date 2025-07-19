@@ -9,11 +9,6 @@ const sectionLinks = [
   { name: 'Benefits', href: '/#benefits' },
   { name: 'Integration', href: '/#integration' },
 ];
-const pageLinks = [
-  { name: 'Team', href: '/team' },
-  { name: 'Careers', href: '/careers' },
-  { name: 'FAQ', href: '/faq' },
-];
 
 const Footer: React.FC = () => {
   const location = useLocation();

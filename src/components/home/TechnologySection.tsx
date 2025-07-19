@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Wind, Cog, Gauge, Zap } from 'lucide-react';
 import '@google/model-viewer'; // Import model-viewer web component
 
@@ -32,7 +32,6 @@ const components = [
 
 const TechnologySection = () => {
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
 
   return (
     <section
