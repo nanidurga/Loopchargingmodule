@@ -1,5 +1,8 @@
 import React from 'react';
-import { ShieldCheck, Cpu, Cable, Car } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
+import { Cpu } from 'lucide-react';
+import { Cable } from 'lucide-react';
+import { Car } from 'lucide-react';
 import { scrollToContact } from '../../utils/navigation';
 import manufactIMG from '../../assets/Manufacturing.webp';
 

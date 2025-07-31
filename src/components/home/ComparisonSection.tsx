@@ -1,5 +1,7 @@
 import React from 'react';
-import { Check, X, AlertCircle } from 'lucide-react';
+import { Check } from 'lucide-react';
+import { X } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 const ComparisonSection: React.FC = () => {
   return (

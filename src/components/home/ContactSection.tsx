@@ -1,5 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Send, Rocket, Linkedin } from 'lucide-react';
+import { Send } from 'lucide-react';
+import { Rocket } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { emailConfig, RATE_LIMIT_MS } from '../../config';
 import { scrollToContact as navigateToContactTab } from '../../utils/navigation';

@@ -1,5 +1,7 @@
 import React from 'react';
-import { ArrowRight, PlugZap, UserPlus } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { PlugZap } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 import { scrollToContact } from '../../utils/navigation'; // no scrollToSection used anymore
 
 const HeroSection: React.FC = () => {

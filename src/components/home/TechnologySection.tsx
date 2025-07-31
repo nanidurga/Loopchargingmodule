@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Wind, Cog, Gauge, Zap } from 'lucide-react';
+import { Wind } from 'lucide-react';
+import { Cog } from 'lucide-react';
+import { Gauge } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import '@google/model-viewer'; // Import model-viewer web component
 
 const components = [
