@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import { Users, Mail, Linkedin } from 'lucide-react';
+import { Users } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 
 // Import team images
 import WesImage from '../../assets/Wes.webp';

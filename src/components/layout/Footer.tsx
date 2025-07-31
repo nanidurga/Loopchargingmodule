@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import {  Linkedin, Mail } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import logo from '../../assets/logo.png';
 import { handleNavigation } from '../../utils/navigation';
 

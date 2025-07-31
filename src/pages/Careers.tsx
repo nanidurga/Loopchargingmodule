@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, MapPin, Clock, Send } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 // Use Unicode INR symbol
 const InrIcon = () => (

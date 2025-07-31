@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
-import { Users, Rocket, Mail, Linkedin } from 'lucide-react';
+import { Users } from 'lucide-react';
+import { Rocket } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import team images

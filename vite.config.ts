@@ -15,9 +15,6 @@ export default defineConfig({
       brotliSize: true,
     }),
   ],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
   build: {
     assetsDir: 'assets',
     rollupOptions: {
@@ -38,6 +35,13 @@ export default defineConfig({
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'framer-motion': ['framer-motion'],
+          'model-viewer-vendor': [
+            '@google/model-viewer',
+            'three',
+            'lit',
+            'lit-html',
+            '@lit/reactive-element',
+          ],
         },
       },
     },

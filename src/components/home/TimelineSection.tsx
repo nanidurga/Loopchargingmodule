@@ -1,5 +1,7 @@
 import React from 'react';
-import { CheckCircle, Clock, AlertCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 interface TimelineItemProps {
   title: string;

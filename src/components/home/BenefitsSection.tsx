@@ -1,5 +1,10 @@
 import React from 'react';
-import { Wind, Battery, Gauge, Activity, Leaf, Building2 } from 'lucide-react';
+import { Wind } from 'lucide-react';
+import { Battery } from 'lucide-react';
+import { Gauge } from 'lucide-react';
+import { Activity } from 'lucide-react';
+import { Leaf } from 'lucide-react';
+import { Building2 } from 'lucide-react';
 import LCMImage from '../../assets/difdesign.webp';
 
 interface BenefitCardProps {
