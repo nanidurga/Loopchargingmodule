@@ -1,0 +1,1 @@
+import{j as e}from"./vendor-TExuX41b.js";import{P as s,a as i}from"./main-BLVUUgvo.js";const r=()=>e.jsx(s,{children:e.jsxs("div",{className:"pt-16 md:pt-20",children:[" ",e.jsx(i,{})]})});export{r as default};
