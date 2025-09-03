@@ -1,1 +1,0 @@
-import{j as t}from"./react-vendor-ZxTVuBQv.js";import{a as i}from"./main-BBM_RFwA.js";import"./vendor-D4nX6ZN8.js";import"./model-viewer-vendor-Bxl38Exh.js";import"./framer-motion-DzmQkECR.js";const p=()=>t.jsxs("div",{className:"pt-16 md:pt-20",children:[" ",t.jsx(i,{})]});export{p as default};
