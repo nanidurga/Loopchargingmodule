@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Page not found — Redirecting…</title>
+  <!-- Fallback for non-JS clients: redirect to root -->
+  <meta http-equiv="refresh" content="0;URL=/" />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;background:#0b0f14;color:#e6eef7;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+    .card{max-width:640px;padding:24px;border-radius:8px;background:rgba(255,255,255,0.03);box-shadow:0 8px 32px rgba(2,6,23,0.6)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Page not found</h1>
+    <p>Loading the app so you can continue — redirecting to the client app…</p>
+  </div>
+
+  <script>
+  // SPA fallback for static hosts (GitHub Pages, etc.)
+  // Fetch `index.html`, inject it, then restore original URL so the client router can handle it.
+  (function () {
+    var path = location.pathname + location.search + location.hash;
+    var index = '/';
+
+    // If we are already at root, nothing to do.
+    if (path === '/' || path === '') return;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', index, true);
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 400) {
+        document.open();
+        document.write(xhr.responseText);
+        document.close();
+        try { history.replaceState(null, null, path); } catch (e) { /* ignore */ }
+      } else {
+        // fallback: navigate to root
+        window.location.replace(index);
+      }
+    };
+    xhr.onerror = function () { window.location.replace(index); };
+    xhr.send();
+  })();
+  </script>
+</body>
+</html>

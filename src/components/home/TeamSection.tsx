@@ -10,7 +10,7 @@ import AniImage from '../../assets/Ani.webp';
 import NavImage from '../../assets/Nav.webp';
 import DurImage from '../../assets/Dur.webp';
 import CheImage from '../../assets/che.webp';
-import TanImage from '../../assets/tanmay.webp';
+import TanImage from '../../assets/palem_amrutharaj.webp';
 
 interface TeamMember {
   name: string;
@@ -74,7 +74,7 @@ const coreTeam: TeamMember[] = [
     background: "As CTO, I architect and drive the core technology powering LCM's breakthrough EV charging solutions.",
     image: DurImage,
     social: {
-      linkedin: "https://www.linkedin.com/in/durga-prasad-nuthalapati-646b73233/",
+      linkedin: "https://www.linkedin.com/in/durga-prasad-nuthalapati/",
       email: "durgaprasad69110@gmail.com"
     }
   },
@@ -89,13 +89,13 @@ const coreTeam: TeamMember[] = [
     }
   },
   {
-    name: "Tanmay Arora",
-    role: "Fractional COO & Strategic Advisor",
-    background: "4x CEO, award-winning business consultant & TedX speaker, bringing global leadership and strategic depth to LCM.",
+    name: "Palem Amrutharaj",
+    role: "CMO",
+    background: "Handles marketing and outreaching clients to expand the business of LCM.",
     image: TanImage,
     social: {
-      linkedin: "https://www.linkedin.com/in/tanmayaroraaa",
-      email: "tanmayaroramba@gmail.com"
+      linkedin: "https://www.linkedin.com/in/durga-prasad-nuthalapati/",
+      email: "durgaprasad69110@gmail.com"
     }
   }
 ];
