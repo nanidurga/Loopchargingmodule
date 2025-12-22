@@ -90,7 +90,7 @@ const coreTeam: TeamMember[] = [
   },
   {
     name: "Palem Amrutharaj",
-    role: "CMO",
+    role: "CMO & Co-Founder",
     background: "Handles marketing and outreaching clients to expand the business of LCM.",
     image: TanImage,
     social: {
