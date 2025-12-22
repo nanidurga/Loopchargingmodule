@@ -10,7 +10,7 @@ import AniImage from '../../assets/Ani.webp';
 import NavImage from '../../assets/Nav.webp';
 import DurImage from '../../assets/Dur.webp';
 import CheImage from '../../assets/che.webp';
-import TanImage from '../../assets/palem_amrutharaj.webp';
+import TanImage from '../../assets/palem_amrutharaj1.webp';
 
 interface TeamMember {
   name: string;
