@@ -10,7 +10,7 @@ import WesImage from '../assets/Wes.webp';
 import JayImage from '../assets/Jay.webp';
 import AniImage from '../assets/Ani.webp';
 import NavImage from '../assets/Nav.webp';
-import DurImage from '../assets/Dur.webp';
+//import DurImage from '../assets/Dur.webp';
 import CheImage from '../assets/che.webp';
 import TanImage from '../assets/palem_amrutharaj1.webp';
 
@@ -68,16 +68,6 @@ const coreTeam: TeamMember[] = [
     social: {
       linkedin: "https://www.linkedin.com/in/naveen-islavath-b992021ba",
       email: "naveenssc2019@gmail.com"
-    }
-  },
-  {
-    name: "Durga Prasad",
-    role: "CTO",
-    background: "As CTO, I architect and drive the core technology powering LCM's breakthrough EV charging solutions.",
-    image: DurImage,
-    social: {
-      linkedin: "https://www.linkedin.com/in/durga-prasad-nuthalapati-646b73233/",
-      email: "durgaprasad69110@gmail.com"
     }
   },
   {
